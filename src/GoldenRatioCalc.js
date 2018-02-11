@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Button, Dimensions, TextInput, TextLabel } from 'react-native';
 import { FormLabel, FormInput } from 'react-native-elements';
 import math from 'mathjs';
 
 import styles from './styles/goldenRatioCalcStyles';
-
 
 class GoldenRatioCalc extends Component {
   state = {
@@ -14,6 +13,10 @@ class GoldenRatioCalc extends Component {
   }
 
   onChangeShortText = (short) => {
+    if (short === '') {
+      return this.setAllToEmptyString();
+    }
+
     const shortNum = Number(short);
     const long = String(shortNum * math.phi);
     const total = String((shortNum * 2) + (long * 2));
@@ -22,6 +25,10 @@ class GoldenRatioCalc extends Component {
   }
 
   onChangeLongText = (long) => {
+    if (long === '') {
+      return this.setAllToEmptyString();
+    }
+
     const longNum = Number(long);
     const short = String(longNum / math.phi);
     const total = String((short * 2) + (longNum * 2));
@@ -30,22 +37,30 @@ class GoldenRatioCalc extends Component {
   }
 
   onChangeTotalText = (total) => {
+    if (total === '') {
+      return this.setAllToEmptyString();
+    }
+
     const totalNum = Number(total);
-    const short = String((totalNum / 2));
+    const short = String((totalNum / (1 + math.phi)));
     const long = String(short * math.phi);
 
     this.setState({ short, long, total });
   }
 
+  setAllToEmptyString = () => {
+    this.setState({ short: '', long: '', total: '' });
+  }
+
   render() {
     return (
-      <View style={styles.calc}>
+      <View onPress={() => console.log('press view')}>
 
         <View>
           <FormLabel>Short Side</FormLabel>
           <FormInput
             value={this.state.short}
-            keyboardType='number-pad'
+            keyboardType='numeric'
             onChangeText={text => this.onChangeShortText(text)}
           />
         </View>
@@ -54,7 +69,7 @@ class GoldenRatioCalc extends Component {
           <FormLabel>Long Side</FormLabel>
           <FormInput
             value={this.state.long}
-            keyboardType='number-pad'
+            keyboardType='numeric'
             onChangeText={text => this.onChangeLongText(text)}
           />
         </View>
@@ -63,8 +78,15 @@ class GoldenRatioCalc extends Component {
           <FormLabel>Total</FormLabel>
           <FormInput
             value={this.state.total}
-            keyboardType='number-pad'
+            keyboardType='numeric'
             onChangeText={text => this.onChangeTotalText(text)}
+          />
+        </View>
+
+        <View>
+          <Button
+            title='Clear'
+            onPress={this.setAllToEmptyString}
           />
         </View>
 

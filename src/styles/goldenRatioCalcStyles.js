@@ -5,12 +5,12 @@ const styles = {
     alignItems: 'center'
   },
   calc: {
-    width: '80%',
     height: '80%',
     backgroundColor: 'gold',
     borderRadius: 10,
     borderColor: 'black',
-    borderWidth: 5
+    borderWidth: 5,
+    marginTop: 50
   }
 };
 
