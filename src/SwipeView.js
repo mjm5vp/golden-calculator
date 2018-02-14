@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Animated, View, Text, Dimensions, PanResponder, TouchableOpacity } from 'react-native';
+import { Button } from 'react-native-elements';
 import GoldenRatioCalc from './GoldenRatioCalc';
 // import styles from './styles/goldenRatioCalcStyles';
 
@@ -8,45 +9,36 @@ const SWIPE_THRESHOLD = 0.5 * SCREEN_WIDTH;
 const SWIPE_OUT_DURATION = 250;
 
 class SwipeView extends Component {
-
-  constructor(props) {
-    super(props);
-
-    const position = new Animated.Value();
-    const panResponder = PanResponder.create({
-      onStartShouldSetPanResponder: () => true,
-      onPanResponderMove: (event, gesture) => {
-        position.setValue({ x: gesture.dx, y: gesture.dy });
-      },
-      onPanResponderRelease: (event, gesture) => {
-        if (gesture.dx > SWIPE_THRESHOLD) {
-          console.log('over threshold');
-          this.flipCard();
-        } else {
-          console.log('reset position');
-          this.resetPosition();
-        }
-      }
-    });
-
-    this.state = { panResponder, position, index: 0 };
-  }
-
-  flipCard() {
+  componentWillMount() {
+    this.animatedValue = new Animated.Value(0);
+    this.value = 0;
+    this.animatedValue.addListener(({ value }) => {
+      this.value = value;
+    })
     this.frontInterpolate = this.animatedValue.interpolate({
       inputRange: [0, 180],
       outputRange: ['0deg', '180deg'],
-    });
+    })
     this.backInterpolate = this.animatedValue.interpolate({
       inputRange: [0, 180],
       outputRange: ['180deg', '360deg']
-    });
+    })
   }
+  flipCard() {
+    if (this.value >= 90) {
+      Animated.spring(this.animatedValue,{
+        toValue: 0,
+        friction: 8,
+        tension: 10
+      }).start();
+    } else {
+      Animated.spring(this.animatedValue,{
+        toValue: 180,
+        friction: 8,
+        tension: 10
+      }).start();
+    }
 
-  resetPosition() {
-  Animated.spring(this.state.position, {
-      toValue: { x: 0, y: 0 }
-    }).start();
   }
 
   render() {
@@ -61,18 +53,25 @@ class SwipeView extends Component {
       ]
     }
     return (
-      <View>
+      <View style={styles.container}>
         <View style={styles.container}>
-          <Animated.View
-            style={[frontAnimatedStyle, styles.flipCard, { zIndex: 99 }]}
-            {...this.state.panResponder.panHandlers}
-          >
-            <GoldenRatioCalc />
+          <Animated.View style={[styles.flipCard, styles.calc, frontAnimatedStyle]}>
+            <View style={styles.container}>
+              <GoldenRatioCalc />
+            </View>
+          </Animated.View>
+          <Animated.View style={[backAnimatedStyle, styles.flipCard, styles.flipCardBack, styles.calc]}>
+            <Text style={styles.flipText}>
+              This text is flipping on the back.
+            </Text>
           </Animated.View>
         </View>
-        <TouchableOpacity onPress={() => this.flipCard()}>
-          <Text>Flip!</Text>
-        </TouchableOpacity>
+        <Button
+          style={{ marginTop: 50 }}
+          onPress={() => this.flipCard()}
+          title='Flip'
+        />
+
       </View>
     );
   }
@@ -80,37 +79,40 @@ class SwipeView extends Component {
 
 const styles = {
   container: {
-    // flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'center',
-
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
   flipCard: {
-    // width: 200,
-    // height: 200,
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // backgroundColor: 'blue',
-    width: SCREEN_WIDTH - 50,
-    height: '80%',
-    backgroundColor: 'gold',
-    borderRadius: 10,
-    borderColor: 'black',
-    borderWidth: 5,
-    marginTop: 50,
+    zIndex: 2,
+    width: 200,
+    height: 200,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'blue',
     backfaceVisibility: 'hidden',
   },
   flipCardBack: {
-    backgroundColor: 'red',
-    // position: 'absolute',
-    // top: 0,
+    zIndex: 1,
+    backgroundColor: "red",
+    position: "absolute",
+    top: 0,
   },
   flipText: {
     width: 90,
     fontSize: 20,
     color: 'white',
     fontWeight: 'bold',
+  },
+  calc: {
+    height: '80%',
+    backgroundColor: 'gold',
+    borderRadius: 10,
+    borderColor: 'black',
+    borderWidth: 5,
+    marginTop: 50
   }
+
 };
 
 export default SwipeView;

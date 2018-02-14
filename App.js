@@ -10,7 +10,7 @@ import styles from './src/styles/appStyles';
 export default class App extends React.Component {
   render() {
     return (
-      <TouchableWithoutFeedback onPress={()=>{DismissKeyboard()}}>
+      <TouchableWithoutFeedback onPress={() => { DismissKeyboard(); }}>
         <View style={styles.container} >
           <SwipeView />
         </View>

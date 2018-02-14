@@ -54,7 +54,10 @@ class GoldenRatioCalc extends Component {
 
   render() {
     return (
-      <View onPress={() => console.log('press view')}>
+      <View
+        onPress={() => console.log('press view')}
+        style={styles.containerView}
+      >
 
         <View>
           <FormLabel>Short Side</FormLabel>
