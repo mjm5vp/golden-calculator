@@ -7,10 +7,18 @@ const styles = {
   calc: {
     height: '80%',
     backgroundColor: 'gold',
-    borderRadius: 10,
+    // borderRadius: 10,
     borderColor: 'black',
     borderWidth: 5,
-    marginTop: 50
+    marginTop: 50,
+    borderTopWidth: 50
+  },
+  formInputContainer: {
+    backgroundColor: 'blue',
+    width: '50%'
+  },
+  formInputInput: {
+    color: 'red'
   }
 };
 

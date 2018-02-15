@@ -48,7 +48,7 @@ class SwipeView extends Component {
         friction: 8,
         tension: 10
       }).start();
-    } 
+    }
   }
 
   render() {
@@ -126,9 +126,11 @@ const styles = {
     width: calcWidth,
     height: calcHeight,
     backgroundColor: 'gold',
-    borderRadius: 10,
+    // borderRadius: 10,
     borderColor: 'black',
     borderWidth: 5,
+    borderTopWidth: 10,
+    borderTopColor: 'blue',
     marginTop: 50
   }
 
