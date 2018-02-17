@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { FormLabel, FormInput } from 'react-native-elements';
 import math from 'mathjs';
+import DismissKeyboard from 'dismissKeyboard';
 
 import styles from './styles/goldenRatioCalcStyles';
 
@@ -163,10 +164,13 @@ class GoldenRatioCalc extends Component {
         </View>
 
 
-        <View>
+        {/* <View>
           <FormLabel>Short Side</FormLabel>
           <FormInput
+            // editable={false}
+            // onFocus={}
             onFocus={() => this.setShortSideBorder()}
+            // onFocus={() => { DismissKeyboard(); }}
             onBlur={() => this.clearBorders()}
             value={this.state.short}
             keyboardType='numeric'
@@ -196,7 +200,7 @@ class GoldenRatioCalc extends Component {
             keyboardType='numeric'
             onChangeText={text => this.onChangeTotalText(text)}
           />
-        </View>
+        </View> */}
 
         <View>
           <Button
