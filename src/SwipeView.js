@@ -15,7 +15,13 @@ class SwipeView extends Component {
   state = {
     front: true,
     frontzIndex: 2,
-    backzIndex: 1
+    backzIndex: 1,
+    border: {
+      borderTopColor: 'black',
+      borderRightColor: 'black',
+      borderLeftColor: 'black',
+      borderBottomColor: 'black'
+    }
   }
   componentWillMount() {
     this.animatedValue = new Animated.Value(0);
@@ -52,6 +58,8 @@ class SwipeView extends Component {
   }
 
   render() {
+    const { borderTopColor, borderRightColor, borderLeftColor, borderBottomColor } = this.state;
+
     let frontzIndex = 1;
     let backzIndex = 2;
     if (this.state.front === true) {
@@ -73,11 +81,23 @@ class SwipeView extends Component {
         { rotateY: this.backInterpolate }
       ]
     };
+    const borderStyles = {
+      borderTopColor,
+      borderRightColor,
+      borderLeftColor,
+      borderBottomColor
+    };
+
     return (
       <View style={styles.container}>
         <View>
-          <Animated.View style={[styles.flipCard, frontAnimatedStyle, styles.calc]}>
-            <GoldenRatioCalc />
+          <Animated.View style={[styles.flipCard, frontAnimatedStyle, styles.calc, borderStyles]}>
+            <GoldenRatioCalc
+              onPressShort={this.setShortSideBorder}
+              onPressLong={this.setLongSideBorder}
+              onPressTotal={this.setTotalBorder}
+              clearBorders={this.clearBorders}
+            />
           </Animated.View>
           <Animated.View
             style={[backAnimatedStyle, styles.flipCard, styles.flipCardBack, styles.calc]}
@@ -86,7 +106,7 @@ class SwipeView extends Component {
           </Animated.View>
         </View>
         <Button
-          style={{ marginTop: 50 }}
+          style={{ marginTop: 10 }}
           onPress={() => this.flipCard()}
           title='Flip'
         />
@@ -128,9 +148,9 @@ const styles = {
     backgroundColor: 'gold',
     // borderRadius: 10,
     borderColor: 'black',
-    borderWidth: 5,
-    borderTopWidth: 10,
-    borderTopColor: 'blue',
+    borderWidth: 10,
+    // borderTopWidth: 10,
+    // borderTopColor: 'blue',
     marginTop: 50
   }
 
