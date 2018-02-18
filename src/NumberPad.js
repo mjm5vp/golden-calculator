@@ -14,27 +14,75 @@ class NumberPad extends Component {
       <View style={styles.container}>
 
         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-          <Button title='7' buttonStyle={styles.buttonStyle} onPress={() => this.buttonPress('7')} />
-          <Button title='8' buttonStyle={styles.buttonStyle} onPress={() => this.buttonPress('8')} />
-          <Button title='9' buttonStyle={styles.buttonStyle} onPress={() => this.buttonPress('9')} />
+          <Button
+            title='7'
+            buttonStyle={styles.buttonStyle}
+            onPress={() => this.buttonPress('7')}
+          />
+          <Button
+            title='8'
+            buttonStyle={styles.buttonStyle}
+            onPress={() => this.buttonPress('8')}
+          />
+          <Button
+            title='9'
+            buttonStyle={styles.buttonStyle}
+            onPress={() => this.buttonPress('9')}
+          />
         </View>
 
         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-          <Button title='4' buttonStyle={styles.buttonStyle} onPress={() => this.buttonPress('4')} />
-          <Button title='5' buttonStyle={styles.buttonStyle} onPress={() => this.buttonPress('5')} />
-          <Button title='6' buttonStyle={styles.buttonStyle} onPress={() => this.buttonPress('6')} />
+          <Button
+            title='4'
+            buttonStyle={styles.buttonStyle}
+            onPress={() => this.buttonPress('4')}
+          />
+          <Button
+            title='5'
+            buttonStyle={styles.buttonStyle}
+            onPress={() => this.buttonPress('5')}
+          />
+          <Button
+            title='6'
+            buttonStyle={styles.buttonStyle}
+            onPress={() => this.buttonPress('6')}
+          />
         </View>
 
         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-          <Button title='1' buttonStyle={styles.buttonStyle} onPress={() => this.buttonPress('1')} />
-          <Button title='2' buttonStyle={styles.buttonStyle} onPress={() => this.buttonPress('2')} />
-          <Button title='3' buttonStyle={styles.buttonStyle} onPress={() => this.buttonPress('3')} />
+          <Button
+            title='1'
+            buttonStyle={styles.buttonStyle}
+            onPress={() => this.buttonPress('1')}
+          />
+          <Button
+            title='2'
+            buttonStyle={styles.buttonStyle}
+            onPress={() => this.buttonPress('2')}
+          />
+          <Button
+            title='3'
+            buttonStyle={styles.buttonStyle}
+            onPress={() => this.buttonPress('3')}
+          />
         </View>
 
         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-          <Button title='.' buttonStyle={styles.buttonStyle} onPress={() => this.buttonPress('.')} />
-          <Button title='0' buttonStyle={styles.buttonStyle} onPress={() => this.buttonPress('0')} />
-          <Button title='<-' buttonStyle={styles.buttonStyle} onPress={() => this.deleteButton()} />
+          <Button
+            title='.'
+            buttonStyle={styles.buttonStyle}
+            onPress={() => this.buttonPress('.')}
+          />
+          <Button
+            title='0'
+            buttonStyle={styles.buttonStyle}
+            onPress={() => this.buttonPress('0')}
+          />
+          <Button
+            title='<-'
+            buttonStyle={styles.buttonStyle}
+            onPress={() => this.props.deleteButton()}
+          />
         </View>
 
         <View>
@@ -62,7 +110,7 @@ const styles = {
     justifyContent: 'space-around',
     alignItems: 'center',
     marginTop: 10,
-    backgroundColor: 'red',
+    // backgroundColor: 'red',
   },
   buttonStyle: {
     backgroundColor: 'black',

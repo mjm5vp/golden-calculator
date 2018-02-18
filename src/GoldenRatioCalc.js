@@ -24,7 +24,14 @@ class GoldenRatioCalc extends Component {
     total: '',
     decimals: 5,
     inputField: null,
-    lastChanged: 'short'
+    lastChanged: 'short',
+    borderTopColor: 'black',
+    borderRightColor: 'black',
+    borderLeftColor: 'black',
+    borderBottomColor: 'black',
+    shortHighlight: 'gray',
+    longHighlight: 'gray',
+    totalHighlight: 'gray'
   }
 
   onChangeShortText = (short) => {
@@ -101,21 +108,6 @@ class GoldenRatioCalc extends Component {
     this.setState({ short: '', long: '', total: '' });
   }
 
-  setShortSideBorder = () => {
-    this.clearBorders();
-    this.addShortSideBorder();
-  }
-
-  setLongSideBorder = () => {
-    this.clearBorders();
-    this.addLongSideBorder();
-  }
-
-  setTotalBorder = () => {
-    this.clearBorders();
-    this.addTotalBorder();
-  }
-
   clearBorders = () => {
     this.setState({
       borderTopColor: 'black',
@@ -125,15 +117,29 @@ class GoldenRatioCalc extends Component {
     });
   }
 
+  clearHighlights = () => {
+    this.setState({
+      shortHighlight: 'gray',
+      longHighlight: 'gray',
+      totalHighlight: 'gray'
+    });
+  }
+
   addShortSideBorder = () => {
     this.setState({
-      borderRightColor: 'blue'
+      borderRightColor: 'blue',
+      inputField: 'short',
+      shortHighlight: 'blue',
+      lastChanged: 'short',
     });
   }
 
   addLongSideBorder = () => {
     this.setState({
-      borderTopColor: 'blue'
+      borderTopColor: 'blue',
+      inputField: 'long',
+      longHighlight: 'blue',
+      lastChanged: 'long',
     });
   }
 
@@ -142,22 +148,28 @@ class GoldenRatioCalc extends Component {
       borderTopColor: 'blue',
       borderRightColor: 'blue',
       borderLeftColor: 'blue',
-      borderBottomColor: 'blue'
+      borderBottomColor: 'blue',
+      inputField: 'total',
+      totalHighlight: 'blue',
+      lastChanged: 'total',
     });
   }
 
   pressShortView = () => {
-    this.setState({ inputField: 'short' });
+    this.clearHighlights();
+    this.clearBorders();
     this.addShortSideBorder();
   }
 
   pressLongView = () => {
-    this.setState({ inputField: 'long' });
+    this.clearHighlights();
+    this.clearBorders();
     this.addLongSideBorder();
   }
 
   pressTotalView = () => {
-    this.setState({ inputField: 'total' });
+    this.clearHighlights();
+    this.clearBorders();
     this.addTotalBorder();
   }
 
@@ -181,11 +193,32 @@ class GoldenRatioCalc extends Component {
   }
 
   deleteButton = () => {
-    console.log('delete');
+    const { short, long, total, inputField } = this.state;
+    let newText = '';
+
+    switch (inputField) {
+      case 'short':
+        newText = short.substring(0, short.length - 1);
+        return this.onChangeShortText(newText);
+      case 'long':
+        newText = long.substring(0, long.length - 1);
+        return this.onChangeLongText(newText);
+      case 'total':
+        newText = total.substring(0, total.length - 1);
+        return this.onChangeTotalText(newText);
+      default:
+        return;
+    }
   }
 
   render() {
-    const { borderTopColor, borderRightColor, borderLeftColor, borderBottomColor } = this.state;
+    const {
+      borderTopColor,
+      borderRightColor,
+      borderLeftColor,
+      borderBottomColor
+    } = this.state;
+
     const borderStyles = {
       borderTopColor,
       borderRightColor,
@@ -193,55 +226,59 @@ class GoldenRatioCalc extends Component {
       borderBottomColor
     };
 
+    const shortHighlight = { backgroundColor: this.state.shortHighlight };
+    const longHighlight = { backgroundColor: this.state.longHighlight };
+    const totalHighlight = { backgroundColor: this.state.totalHighlight };
+
     return (
       <View onPress={() => console.log('press view')}>
 
         <View style={[constStyles.rectContainer]}>
           <View style={[constStyles.constRect, borderStyles]}>
 
+            <View style={{ alignItems: 'center' }}>
+              <Text>Short Side</Text>
+              <TouchableOpacity
+                // style={styles.textInputOpacity}
+                onPress={() => this.pressShortView()}
+              >
+                <View style={[constStyles.textInput, shortHighlight]}>
+                  <Text>
+                    {this.state.short}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+
+            <View style={{ alignItems: 'center' }}>
+              <Text>Long Side</Text>
+              <TouchableOpacity onPress={() => this.pressLongView()}>
+                <View style={[constStyles.textInput, longHighlight]}>
+                  <Text>
+                    {this.state.long}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+
+            <View style={{ alignItems: 'center' }}>
+              <Text>Total</Text>
+              <TouchableOpacity onPress={() => this.pressTotalView()}>
+                <View style={[constStyles.textInput, totalHighlight]}>
+                  <Text>
+                    {this.state.total}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+
           </View>
-        </View>
-
-        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-
-          <View>
-            <Text>Short Side</Text>
-            <TouchableOpacity onPress={() => this.pressShortView()}>
-              <View>
-                <Text>
-                  {this.state.short}
-                </Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-
-          <View>
-            <Text>Long Side</Text>
-            <TouchableOpacity onPress={() => this.pressLongView()}>
-              <View>
-                <Text>
-                  {this.state.long}
-                </Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-
-          <View>
-            <Text>Total</Text>
-            <TouchableOpacity onPress={() => this.pressTotalView()}>
-              <View>
-                <Text>
-                  {this.state.total}
-                </Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-
         </View>
 
         <NumberPad
           buttonPress={(text) => this.buttonPress(text)}
           clearButton={() => this.setAllToEmptyString()}
+          deleteButton={() => this.deleteButton()}
         />
 
         <TouchableOpacity>
@@ -278,7 +315,6 @@ class GoldenRatioCalc extends Component {
 }
 
 const RECT_CONTAINER_WIDTH = (SCREEN_WIDTH * 0.9) - 20;
-const BUTTON_WIDTH = (RECT_CONTAINER_WIDTH * 0.8) / 3;
 
 const constStyles = {
   rectContainer: {
@@ -287,12 +323,22 @@ const constStyles = {
     justifyContent: 'space-around',
     alignItems: 'center',
     marginTop: 10,
-    backgroundColor: 'red',
+    // backgroundColor: 'red',
   },
   constRect: {
+    justifyContent: 'space-around',
+    // alignItems: 'center',
     borderWidth: 5,
     width: RECT_WIDTH,
     height: RECT_HEIGHT
+  },
+  textInputOpacity: {
+
+  },
+  textInput: {
+    width: 100,
+    height: 50,
+    backgroundColor: 'green'
   }
 };
 
