@@ -10,28 +10,34 @@ class BackViewCalc extends Component {
     realize: ''
   }
 
-  
+  buttonPress = (text) => {
+    console.log('buttonPress');
+  }
+
+  clearButton = () => {
+    console.log('clearButton');
+  }
+
+  deleteButton = () => {
+    console.log('deleteButton');
+  }
 
   render() {
     return (
       <View>
 
         <View>
-          <FormLabel>Time it takes to look inside</FormLabel>
-          <FormInput
-            value={this.state.inside}
-            keyboardType='numeric'
-            onChangeText={text => this.onChangeInsideText(text)}
-          />
+          <Text>Time it takes to look inside</Text>
+          <View>
+            <Text>{this.state.inside}</Text>
+          </View>
         </View>
 
         <View>
-          <FormLabel>Time it takes to realize</FormLabel>
-          <FormInput
-            value={this.state.realize}
-            keyboardType='numeric'
-            onChangeText={text => this.onChangeRealizeText(text)}
-          />
+          <Text>Time it takes to realize</Text>
+          <View>
+            <Text>{this.state.realize}</Text>
+          </View>
         </View>
 
         <View>

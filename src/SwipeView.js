@@ -85,6 +85,7 @@ class SwipeView extends Component {
               onPressLong={this.setLongSideBorder}
               onPressTotal={this.setTotalBorder}
               clearBorders={this.clearBorders}
+              flipCard={() => this.flipCard()}
             />
           </Animated.View>
           <Animated.View
@@ -93,12 +94,6 @@ class SwipeView extends Component {
             <BackViewCalc />
           </Animated.View>
         </View>
-        <Button
-          style={{ marginTop: 10 }}
-          onPress={() => this.flipCard()}
-          title='Flip'
-        />
-
       </View>
     );
   }

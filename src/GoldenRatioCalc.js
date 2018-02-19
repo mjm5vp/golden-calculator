@@ -66,7 +66,11 @@ class GoldenRatioCalc extends Component {
     this.setState({ short, long, total, lastChanged: 'total' });
   }
 
-  updateDecimals = (decimals) => {
+  updateDecimals = () => {
+    const decimals = this.state.decimals === 10
+      ? 0
+      : this.state.decimals + 1;
+
     this.setState({ decimals },
       this.state.short === ''
         ? this.setAllToEmptyString
@@ -240,9 +244,10 @@ class GoldenRatioCalc extends Component {
               >
                 <View style={[constStyles.textInput, shortHighlight]}>
                   <Text
+                    // adjustsFontSizeToFit
+                    allowFontScaling
                     style={constStyles.text}
-                    adjustsFontSizeToFit
-                    numberOfLines={1}
+                    numberOfLines={3}
                   >{this.state.short}</Text>
                 </View>
               </TouchableOpacity>
@@ -253,9 +258,10 @@ class GoldenRatioCalc extends Component {
               <TouchableOpacity onPress={() => this.pressLongView()}>
                 <View style={[constStyles.textInput, longHighlight]}>
                   <Text
+                    // adjustsFontSizeToFit
+                    allowFontScaling
                     style={constStyles.text}
-                    adjustsFontSizeToFit
-                    numberOfLines={1}
+                    numberOfLines={3}
                   >{this.state.long}</Text>
                 </View>
               </TouchableOpacity>
@@ -266,9 +272,10 @@ class GoldenRatioCalc extends Component {
               <TouchableOpacity onPress={() => this.pressTotalView()}>
                 <View style={[constStyles.textInput, totalHighlight]}>
                   <Text
+                    // adjustsFontSizeToFit
+                    allowFontScaling
                     style={constStyles.text}
-                    adjustsFontSizeToFit
-                    numberOfLines={1}
+                    numberOfLines={3}
                   >{this.state.total}</Text>
                 </View>
               </TouchableOpacity>
@@ -281,6 +288,10 @@ class GoldenRatioCalc extends Component {
           buttonPress={(text) => this.buttonPress(text)}
           clearButton={() => this.setAllToEmptyString()}
           deleteButton={() => this.deleteButton()}
+          flipCard={this.props.flipCard}
+          updateDecimals={() => this.updateDecimals()}
+          decimals={this.state.decimals}
+
         />
 
         <TouchableOpacity>
@@ -294,7 +305,7 @@ class GoldenRatioCalc extends Component {
           // style={{ transform: [{ rotate: '90deg' }] }}
           // itemStyle={{ color: 'blue', transform: [{ rotate: '180deg' }] }}
           selectedValue={this.state.decimals}
-          onValueChange={decimals => this.updateDecimals(decimals)}
+          onValueChange={() => this.updateDecimals()}
         >
           <Picker.Item label="0" value="0" />
           <Picker.Item label="1" value="0" />
@@ -362,7 +373,7 @@ const constStyles = {
     backgroundColor: 'green'
   },
   text: {
-    fontSize: (TEXT_INPUT_HEIGHT / 2) - 10
+    fontSize: (TEXT_INPUT_HEIGHT / 3) - 2
   }
 };
 

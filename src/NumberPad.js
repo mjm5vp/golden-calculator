@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Dimensions } from 'react-native';
+import { View, Text, Dimensions, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements';
 import math from 'mathjs';
 
@@ -88,7 +88,8 @@ class NumberPad extends Component {
             buttonStyle={styles.buttonStyle}
             onPress={() => this.buttonPress('0')}
             raised
-            TouchableComponent='TouchableOpacity'
+            underlayColor='white'
+            // TouchableComponent='TouchableOpacity'
           />
           <Button
             title='<-'
@@ -98,12 +99,26 @@ class NumberPad extends Component {
           />
         </View>
 
-        <View>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+          <TouchableOpacity onPress={this.props.updateDecimals}>
+            <View
+              style={[styles.buttonStyle, { alignItems: 'center' }]}
+            >
+              <Text style={{ color: 'white' }}>Decimals:</Text>
+              <Text style={{ color: 'white' }}>{this.props.decimals}</Text>
+            </View>
+          </TouchableOpacity>
           <Button
             title='Clear'
             onPress={this.props.clearButton}
             buttonStyle={styles.buttonStyle}
             raised
+          />
+          <Button
+            buttonStyle={styles.buttonStyle}
+            raised
+            onPress={() => this.props.flipCard()}
+            title='Flip'
           />
         </View>
 
