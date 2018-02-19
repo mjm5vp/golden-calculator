@@ -15,13 +15,7 @@ class SwipeView extends Component {
   state = {
     front: true,
     frontzIndex: 2,
-    backzIndex: 1,
-    border: {
-      borderTopColor: 'black',
-      borderRightColor: 'black',
-      borderLeftColor: 'black',
-      borderBottomColor: 'black'
-    }
+    backzIndex: 1
   }
   componentWillMount() {
     this.animatedValue = new Animated.Value(0);
@@ -81,22 +75,17 @@ class SwipeView extends Component {
         { rotateY: this.backInterpolate }
       ]
     };
-    const borderStyles = {
-      borderTopColor,
-      borderRightColor,
-      borderLeftColor,
-      borderBottomColor
-    };
 
     return (
       <View style={styles.container}>
         <View>
-          <Animated.View style={[styles.flipCard, frontAnimatedStyle, styles.calc, borderStyles]}>
+          <Animated.View style={[styles.flipCard, frontAnimatedStyle, styles.calc]}>
             <GoldenRatioCalc
               onPressShort={this.setShortSideBorder}
               onPressLong={this.setLongSideBorder}
               onPressTotal={this.setTotalBorder}
               clearBorders={this.clearBorders}
+              flipCard={() => this.flipCard()}
             />
           </Animated.View>
           <Animated.View
@@ -105,12 +94,6 @@ class SwipeView extends Component {
             <BackViewCalc />
           </Animated.View>
         </View>
-        <Button
-          style={{ marginTop: 10 }}
-          onPress={() => this.flipCard()}
-          title='Flip'
-        />
-
       </View>
     );
   }
