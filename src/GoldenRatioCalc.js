@@ -4,9 +4,7 @@ import {
   View,
   Dimensions,
   TouchableOpacity,
-  Picker
 } from 'react-native';
-import { FormLabel, FormInput, Button } from 'react-native-elements';
 import math from 'mathjs';
 // import DismissKeyboard from 'dismissKeyboard';
 
@@ -101,7 +99,7 @@ class GoldenRatioCalc extends Component {
   formatInput = (number) => {
     const { decimals } = this.state;
 
-    return String(number.toFixed(decimals));
+    return isNaN(number) ? 'ERROR' : String(number.toFixed(decimals));
   }
 
   setAllToEmptyString = () => {
@@ -293,34 +291,6 @@ class GoldenRatioCalc extends Component {
           decimals={this.state.decimals}
 
         />
-
-        <TouchableOpacity>
-          <View>
-            <Text>{this.state.decimals}</Text>
-          </View>
-        </TouchableOpacity>
-
-        <Picker
-          style={{ width: 50 }}
-          // style={{ transform: [{ rotate: '90deg' }] }}
-          // itemStyle={{ color: 'blue', transform: [{ rotate: '180deg' }] }}
-          selectedValue={this.state.decimals}
-          onValueChange={() => this.updateDecimals()}
-        >
-          <Picker.Item label="0" value="0" />
-          <Picker.Item label="1" value="0" />
-          <Picker.Item label="2" value="2" />
-          <Picker.Item label="3" value="3" />
-          <Picker.Item label="4" value="4" />
-          <Picker.Item label="5" value="5" />
-          <Picker.Item label="6" value="6" />
-          <Picker.Item label="7" value="7" />
-          <Picker.Item label="8" value="8" />
-          <Picker.Item label="9" value="9" />
-          <Picker.Item label="10" value="10" />
-
-        </Picker>
-
 
       </View>
     );

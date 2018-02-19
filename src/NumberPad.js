@@ -1,151 +1,75 @@
 import React, { Component } from 'react';
-import { View, Text, Dimensions, TouchableOpacity } from 'react-native';
-import { Button } from 'react-native-elements';
-import math from 'mathjs';
+import { View, Text } from 'react-native';
+import { Icon } from 'react-native-elements';
+
+import { Button, IconButton } from './components/Button';
+import styles from './styles/numberPadStyles';
 
 class NumberPad extends Component {
 
-  buttonPress = (text) => {
-    this.props.buttonPress(text);
-  }
-
   render() {
+    const {
+      buttonPress,
+      deleteButton,
+      clearButton,
+      updateDecimals,
+      decimals,
+      flipCard
+    } = this.props;
+
     return (
       <View style={styles.container}>
 
         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-          <Button
-            title='7'
-            buttonStyle={styles.buttonStyle}
-            onPress={() => this.buttonPress('7')}
-            raised
-          />
-          <Button
-            title='8'
-            buttonStyle={styles.buttonStyle}
-            onPress={() => this.buttonPress('8')}
-            raised
-          />
-          <Button
-            title='9'
-            buttonStyle={styles.buttonStyle}
-            onPress={() => this.buttonPress('9')}
-            raised
-          />
+          <Button onPress={() => buttonPress('7')}>7</Button>
+          <Button onPress={() => buttonPress('8')}>8</Button>
+          <Button onPress={() => buttonPress('9')}>9</Button>
         </View>
 
         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-          <Button
-            title='4'
-            buttonStyle={styles.buttonStyle}
-            onPress={() => this.buttonPress('4')}
-            raised
-          />
-          <Button
-            title='5'
-            buttonStyle={styles.buttonStyle}
-            onPress={() => this.buttonPress('5')}
-            raised
-          />
-          <Button
-            title='6'
-            buttonStyle={styles.buttonStyle}
-            onPress={() => this.buttonPress('6')}
-            raised
-          />
+          <Button onPress={() => buttonPress('4')}>4</Button>
+          <Button onPress={() => buttonPress('5')}>5</Button>
+          <Button onPress={() => buttonPress('6')}>6</Button>
         </View>
 
         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-          <Button
-            title='1'
-            buttonStyle={styles.buttonStyle}
-            onPress={() => this.buttonPress('1')}
-            raised
-          />
-          <Button
-            title='2'
-            buttonStyle={styles.buttonStyle}
-            onPress={() => this.buttonPress('2')}
-            raised
-          />
-          <Button
-            title='3'
-            buttonStyle={styles.buttonStyle}
-            onPress={() => this.buttonPress('3')}
-            raised
-          />
+          <Button onPress={() => buttonPress('1')}>1</Button>
+          <Button onPress={() => buttonPress('2')}>2</Button>
+          <Button onPress={() => buttonPress('3')}>3</Button>
+
         </View>
 
         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-          <Button
-            title='.'
-            buttonStyle={styles.buttonStyle}
-            onPress={() => this.buttonPress('.')}
-            raised
-          />
-          <Button
-            title='0'
-            buttonStyle={styles.buttonStyle}
-            onPress={() => this.buttonPress('0')}
-            raised
-            underlayColor='white'
-            // TouchableComponent='TouchableOpacity'
-          />
-          <Button
-            title='<-'
-            buttonStyle={styles.buttonStyle}
-            onPress={() => this.props.deleteButton()}
-            raised
-          />
+          <IconButton onPress={() => buttonPress('.')}>
+            <Icon
+              name='dot-single'
+              type='entypo'
+              color='white'
+            />
+          </IconButton>
+          <Button onPress={() => buttonPress('0')}>0</Button>
+          <IconButton onPress={() => deleteButton()}>
+            <Icon
+              name='delete'
+              type='feather'
+              color='white'
+            />
+          </IconButton>
         </View>
 
         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-          <TouchableOpacity onPress={this.props.updateDecimals}>
-            <View
-              style={[styles.buttonStyle, { alignItems: 'center' }]}
-            >
-              <Text style={{ color: 'white' }}>Decimals:</Text>
-              <Text style={{ color: 'white' }}>{this.props.decimals}</Text>
-            </View>
-          </TouchableOpacity>
-          <Button
-            title='Clear'
-            onPress={this.props.clearButton}
-            buttonStyle={styles.buttonStyle}
-            raised
-          />
-          <Button
-            buttonStyle={styles.buttonStyle}
-            raised
-            onPress={() => this.props.flipCard()}
-            title='Flip'
-          />
+          <IconButton onPress={() => updateDecimals()}>
+            <Text style={{ color: 'white' }}>Decimals:</Text>
+            <Text style={{ color: 'white' }}>{decimals}</Text>
+          </IconButton>
+          <Button onPress={() => clearButton()}>Clear</Button>
+          <Button onPress={() => flipCard()}>Flip</Button>
+
         </View>
 
       </View>
     );
   }
 }
-
-const SCREEN_WIDTH = Dimensions.get('window').width;
-const RECT_CONTAINER_WIDTH = (SCREEN_WIDTH * 0.9) - 20;
-const BUTTON_WIDTH = (RECT_CONTAINER_WIDTH * 0.7) / 3;
-const BUTTON_HEIGHT = BUTTON_WIDTH / math.phi;
-
-const styles = {
-  container: {
-    height: 270,
-    width: RECT_CONTAINER_WIDTH,
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    marginTop: 10,
-    // backgroundColor: 'red',
-  },
-  buttonStyle: {
-    backgroundColor: 'black',
-    width: BUTTON_WIDTH,
-    height: BUTTON_HEIGHT
-  }
-};
 
 export default NumberPad;
