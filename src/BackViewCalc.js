@@ -2,20 +2,15 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { Button, FormInput, FormLabel } from 'react-native-elements';
 
+import NumberPad from './NumberPad';
+
 class BackViewCalc extends Component {
   state = {
     inside: '',
     realize: ''
   }
 
-  onChangeInsideText = (text) => {
-    this.setState({ inside: text });
-  }
-
-  onChangeRealizeText = (text) => {
-    this.setState({ realize: text });
-  }
-
+  
 
   render() {
     return (
@@ -36,6 +31,14 @@ class BackViewCalc extends Component {
             value={this.state.realize}
             keyboardType='numeric'
             onChangeText={text => this.onChangeRealizeText(text)}
+          />
+        </View>
+
+        <View>
+          <NumberPad
+            buttonPress={(text) => this.buttonPress(text)}
+            clearButton={() => this.setAllToEmptyString()}
+            deleteButton={() => this.deleteButton()}
           />
         </View>
 

@@ -13,10 +13,6 @@ import math from 'mathjs';
 import NumberPad from './NumberPad';
 import styles from './styles/goldenRatioCalcStyles';
 
-const SCREEN_WIDTH = Dimensions.get('window').width;
-const RECT_WIDTH = SCREEN_WIDTH * 0.8;
-const RECT_HEIGHT = RECT_WIDTH / math.phi;
-
 class GoldenRatioCalc extends Component {
   state = {
     short: '',
@@ -55,7 +51,7 @@ class GoldenRatioCalc extends Component {
     const short = this.formatInput(longNum / math.phi);
     const total = this.formatInput((short * 2) + (longNum * 2));
 
-    this.setState({ short, long, total, lastChanged: 'short' });
+    this.setState({ short, long, total, lastChanged: 'long' });
   }
 
   onChangeTotalText = (total) => {
@@ -67,7 +63,7 @@ class GoldenRatioCalc extends Component {
     const short = this.formatInput((totalNum / (1 + math.phi)));
     const long = this.formatInput(short * math.phi);
 
-    this.setState({ short, long, total, lastChanged: 'short' });
+    this.setState({ short, long, total, lastChanged: 'total' });
   }
 
   updateDecimals = (decimals) => {
@@ -236,38 +232,44 @@ class GoldenRatioCalc extends Component {
         <View style={[constStyles.rectContainer]}>
           <View style={[constStyles.constRect, borderStyles]}>
 
-            <View style={{ alignItems: 'center' }}>
-              <Text>Short Side</Text>
+            <View style={constStyles.sideInputContainer}>
+              <Text style={constStyles.text}>Short Side</Text>
               <TouchableOpacity
                 // style={styles.textInputOpacity}
                 onPress={() => this.pressShortView()}
               >
                 <View style={[constStyles.textInput, shortHighlight]}>
-                  <Text>
-                    {this.state.short}
-                  </Text>
+                  <Text
+                    style={constStyles.text}
+                    adjustsFontSizeToFit
+                    numberOfLines={1}
+                  >{this.state.short}</Text>
                 </View>
               </TouchableOpacity>
             </View>
 
-            <View style={{ alignItems: 'center' }}>
-              <Text>Long Side</Text>
+            <View style={constStyles.sideInputContainer}>
+              <Text style={constStyles.text}>Long Side</Text>
               <TouchableOpacity onPress={() => this.pressLongView()}>
                 <View style={[constStyles.textInput, longHighlight]}>
-                  <Text>
-                    {this.state.long}
-                  </Text>
+                  <Text
+                    style={constStyles.text}
+                    adjustsFontSizeToFit
+                    numberOfLines={1}
+                  >{this.state.long}</Text>
                 </View>
               </TouchableOpacity>
             </View>
 
-            <View style={{ alignItems: 'center' }}>
-              <Text>Total</Text>
+            <View style={constStyles.sideInputContainer}>
+              <Text style={constStyles.text}>Total</Text>
               <TouchableOpacity onPress={() => this.pressTotalView()}>
                 <View style={[constStyles.textInput, totalHighlight]}>
-                  <Text>
-                    {this.state.total}
-                  </Text>
+                  <Text
+                    style={constStyles.text}
+                    adjustsFontSizeToFit
+                    numberOfLines={1}
+                  >{this.state.total}</Text>
                 </View>
               </TouchableOpacity>
             </View>
@@ -314,7 +316,15 @@ class GoldenRatioCalc extends Component {
   }
 }
 
+const SCREEN_WIDTH = Dimensions.get('window').width;
+const RECT_WIDTH = SCREEN_WIDTH * 0.8;
+const RECT_HEIGHT = RECT_WIDTH / math.phi;
 const RECT_CONTAINER_WIDTH = (SCREEN_WIDTH * 0.9) - 20;
+const TEXT_INPUT_HEIGHT = (RECT_HEIGHT / 3) - 10;
+const TEXT_INPUT_WIDTH = TEXT_INPUT_HEIGHT * math.phi;
+
+console.log(TEXT_INPUT_HEIGHT)
+console.log(TEXT_INPUT_WIDTH)
 
 const constStyles = {
   rectContainer: {
@@ -332,13 +342,27 @@ const constStyles = {
     width: RECT_WIDTH,
     height: RECT_HEIGHT
   },
+  sideInputContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginLeft: 30,
+    marginRight: 30
+  },
   textInputOpacity: {
 
   },
   textInput: {
-    width: 100,
-    height: 50,
+    width: TEXT_INPUT_WIDTH,
+    height: TEXT_INPUT_HEIGHT,
+    justifyContent: 'center',
+    // width: 100,
+    // height: 50,
+    // marginTop: 10,
     backgroundColor: 'green'
+  },
+  text: {
+    fontSize: (TEXT_INPUT_HEIGHT / 2) - 10
   }
 };
 

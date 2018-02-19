@@ -18,16 +18,19 @@ class NumberPad extends Component {
             title='7'
             buttonStyle={styles.buttonStyle}
             onPress={() => this.buttonPress('7')}
+            raised
           />
           <Button
             title='8'
             buttonStyle={styles.buttonStyle}
             onPress={() => this.buttonPress('8')}
+            raised
           />
           <Button
             title='9'
             buttonStyle={styles.buttonStyle}
             onPress={() => this.buttonPress('9')}
+            raised
           />
         </View>
 
@@ -36,16 +39,19 @@ class NumberPad extends Component {
             title='4'
             buttonStyle={styles.buttonStyle}
             onPress={() => this.buttonPress('4')}
+            raised
           />
           <Button
             title='5'
             buttonStyle={styles.buttonStyle}
             onPress={() => this.buttonPress('5')}
+            raised
           />
           <Button
             title='6'
             buttonStyle={styles.buttonStyle}
             onPress={() => this.buttonPress('6')}
+            raised
           />
         </View>
 
@@ -54,16 +60,19 @@ class NumberPad extends Component {
             title='1'
             buttonStyle={styles.buttonStyle}
             onPress={() => this.buttonPress('1')}
+            raised
           />
           <Button
             title='2'
             buttonStyle={styles.buttonStyle}
             onPress={() => this.buttonPress('2')}
+            raised
           />
           <Button
             title='3'
             buttonStyle={styles.buttonStyle}
             onPress={() => this.buttonPress('3')}
+            raised
           />
         </View>
 
@@ -72,16 +81,20 @@ class NumberPad extends Component {
             title='.'
             buttonStyle={styles.buttonStyle}
             onPress={() => this.buttonPress('.')}
+            raised
           />
           <Button
             title='0'
             buttonStyle={styles.buttonStyle}
             onPress={() => this.buttonPress('0')}
+            raised
+            TouchableComponent='TouchableOpacity'
           />
           <Button
             title='<-'
             buttonStyle={styles.buttonStyle}
             onPress={() => this.props.deleteButton()}
+            raised
           />
         </View>
 
@@ -90,6 +103,7 @@ class NumberPad extends Component {
             title='Clear'
             onPress={this.props.clearButton}
             buttonStyle={styles.buttonStyle}
+            raised
           />
         </View>
 
