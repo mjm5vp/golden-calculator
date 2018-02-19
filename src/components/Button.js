@@ -40,11 +40,14 @@ const styles = {
   },
   buttonStyle: {
     backgroundColor: 'black',
+    borderWidth: 2,
+    borderRadius: 2,
+    borderColor: 'gray',
     width: BUTTON_WIDTH,
     height: BUTTON_HEIGHT,
     margin: 10,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   textStyle: {
     color: 'white'

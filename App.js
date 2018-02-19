@@ -1,10 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
-import DismissKeyboard from 'dismissKeyboard';
+import { View, TouchableWithoutFeedback } from 'react-native';
 
 
 // import GoldenRatioCalc from './src/GoldenRatioCalc';
-import SwipeView from './src/SwipeView';
+import FlipView from './src/FlipView';
 import styles from './src/styles/appStyles';
 
 export default class App extends React.Component {
@@ -12,7 +11,7 @@ export default class App extends React.Component {
     return (
       <TouchableWithoutFeedback>
         <View style={styles.container} >
-          <SwipeView />
+          <FlipView />
         </View>
       </TouchableWithoutFeedback>
     );
