@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { Button, FormInput, FormLabel } from 'react-native-elements';
 
 import NumberPad from './NumberPad';
@@ -8,18 +8,6 @@ class BackViewCalc extends Component {
   state = {
     inside: '',
     realize: ''
-  }
-
-  buttonPress = (text) => {
-    console.log('buttonPress');
-  }
-
-  clearButton = () => {
-    console.log('clearButton');
-  }
-
-  deleteButton = () => {
-    console.log('deleteButton');
   }
 
   render() {
@@ -40,11 +28,19 @@ class BackViewCalc extends Component {
           </View>
         </View>
 
+        <Image
+          style={{ width: 100, height: 50 }}
+          source={{ uri: 'https://i.redd.it/jdqgzohp4dh01.gif' }}
+        />
+
         <View>
           <NumberPad
             buttonPress={(text) => this.buttonPress(text)}
-            clearButton={() => this.setAllToEmptyString()}
+            clearButton={() => this.clearButton()}
             deleteButton={() => this.deleteButton()}
+            flipCard={this.props.flipCard}
+            updateDecimals={() => this.updateDecimals()}
+            decimals={this.state.decimals}
           />
         </View>
 

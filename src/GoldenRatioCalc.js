@@ -288,7 +288,6 @@ class GoldenRatioCalc extends Component {
           flipCard={this.props.flipCard}
           updateDecimals={() => this.updateDecimals()}
           decimals={this.state.decimals}
-
         />
 
       </View>

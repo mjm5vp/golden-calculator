@@ -54,7 +54,7 @@ class FlipView extends Component {
       frontzIndex = 1;
       backzIndex = 2;
     }
-    
+
     const frontAnimatedStyle = {
       zIndex: frontzIndex,
       transform: [
@@ -73,17 +73,15 @@ class FlipView extends Component {
         <View>
           <Animated.View style={[styles.flipCard, frontAnimatedStyle, styles.calc]}>
             <GoldenRatioCalc
-              onPressShort={this.setShortSideBorder}
-              onPressLong={this.setLongSideBorder}
-              onPressTotal={this.setTotalBorder}
-              clearBorders={this.clearBorders}
               flipCard={() => this.flipCard()}
             />
           </Animated.View>
           <Animated.View
             style={[backAnimatedStyle, styles.flipCard, styles.flipCardBack, styles.calc]}
           >
-            <BackViewCalc />
+            <BackViewCalc
+              flipCard={() => this.flipCard()}
+            />
           </Animated.View>
         </View>
       </View>

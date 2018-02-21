@@ -37,7 +37,12 @@ const styles = {
     borderWidth: 10,
     // borderTopWidth: 10,
     // borderTopColor: 'blue',
-    marginTop: 50
+    marginTop: 50,
+    shadowColor: '#000',
+    shadowOffset: { width: 5, height: 10 },
+    shadowOpacity: 0.6,
+    shadowRadius: 2,
+    elevation: 1,
   }
 };
 
