@@ -31,7 +31,7 @@ const styles = {
   calc: {
     width: calcWidth,
     height: calcHeight,
-    backgroundColor: 'gold',
+    backgroundColor: '#D4AF37',
     // borderRadius: 10,
     borderColor: 'black',
     borderWidth: 10,

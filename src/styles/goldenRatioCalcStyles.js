@@ -29,10 +29,7 @@ const styles = {
   },
   formInputInput: {
     color: 'red'
-  }
-};
-
-const constStyles = {
+  },
   rectContainer: {
     height: RECT_HEIGHT + 50,
     width: RECT_CONTAINER_WIDTH,

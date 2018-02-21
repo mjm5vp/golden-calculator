@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   Text,
   View,
-  Dimensions,
   TouchableOpacity,
 } from 'react-native';
 import math from 'mathjs';
@@ -11,6 +10,8 @@ import math from 'mathjs';
 import NumberPad from './NumberPad';
 import styles from './styles/goldenRatioCalcStyles';
 
+const color1 = '#f2ead5';
+
 class GoldenRatioCalc extends Component {
   state = {
     short: '',
@@ -18,140 +19,20 @@ class GoldenRatioCalc extends Component {
     total: '',
     decimals: 5,
     inputField: null,
-    lastChanged: 'short',
-    borderTopColor: 'black',
-    borderRightColor: 'black',
-    borderLeftColor: 'black',
-    borderBottomColor: 'black',
-    shortHighlight: 'gray',
-    longHighlight: 'gray',
-    totalHighlight: 'gray'
+    // borderTopColor: 'black',
+    // borderRightColor: 'black',
+    // borderLeftColor: 'black',
+    // borderBottomColor: 'black',
+    // shortHighlight: 'gray',
+    // longHighlight: 'gray',
+    // totalHighlight: 'gray'
   }
 
-  onChangeShortText = (short) => {
-    if (short === '') {
-      return this.setAllToEmptyString();
-    }
-
-    const shortNum = Number(short);
-    const long = this.formatInput(shortNum * math.phi);
-    const total = this.formatInput((shortNum * 2) + (long * 2));
-
-    this.setState({ short, long, total, lastChanged: 'short' });
+  componentWillMount() {
+    this.clearHighlights();
+    this.clearBorders();
   }
 
-  onChangeLongText = (long) => {
-    if (long === '') {
-      return this.setAllToEmptyString();
-    }
-
-    const longNum = Number(long);
-    const short = this.formatInput(longNum / math.phi);
-    const total = this.formatInput((short * 2) + (longNum * 2));
-
-    this.setState({ short, long, total, lastChanged: 'long' });
-  }
-
-  onChangeTotalText = (total) => {
-    if (total === '') {
-      return this.setAllToEmptyString();
-    }
-
-    const totalNum = Number(total);
-    const short = this.formatInput((totalNum / (1 + math.phi)));
-    const long = this.formatInput(short * math.phi);
-
-    this.setState({ short, long, total, lastChanged: 'total' });
-  }
-
-  updateDecimals = () => {
-    const decimals = this.state.decimals === 10
-      ? 0
-      : this.state.decimals + 1;
-
-    this.setState({ decimals },
-      this.state.short === ''
-        ? this.setAllToEmptyString
-        : this.selectUpdateOnLastChanged
-    //   () => {
-    //   this.state.short === ''
-    //   ? this.setAllToEmptyString()
-    //   : this.selectUpdateOnLastChanged();
-    // }
-    );
-  }
-
-  selectUpdateOnLastChanged = () => {
-    const { short, long, total, lastChanged } = this.state;
-
-    switch (lastChanged) {
-      case 'short':
-        return this.onChangeShortText(short);
-      case 'long':
-        return this.onChangeLongText(long);
-      case 'total':
-        return this.onChangeTotalText(total);
-      default:
-        return this.setAllToEmptyString();
-    }
-  }
-
-  formatInput = (number) => {
-    const { decimals } = this.state;
-
-    return isNaN(number) ? 'ERROR' : String(number.toFixed(decimals));
-  }
-
-  setAllToEmptyString = () => {
-    this.setState({ short: '', long: '', total: '' });
-  }
-
-  clearBorders = () => {
-    this.setState({
-      borderTopColor: 'black',
-      borderRightColor: 'black',
-      borderLeftColor: 'black',
-      borderBottomColor: 'black'
-    });
-  }
-
-  clearHighlights = () => {
-    this.setState({
-      shortHighlight: 'gray',
-      longHighlight: 'gray',
-      totalHighlight: 'gray'
-    });
-  }
-
-  addShortSideBorder = () => {
-    this.setState({
-      borderRightColor: 'blue',
-      inputField: 'short',
-      shortHighlight: 'blue',
-      lastChanged: 'short',
-    });
-  }
-
-  addLongSideBorder = () => {
-    this.setState({
-      borderTopColor: 'blue',
-      inputField: 'long',
-      longHighlight: 'blue',
-      lastChanged: 'long',
-    });
-  }
-
-  addTotalBorder = () => {
-    this.setState({
-      borderTopColor: 'blue',
-      borderRightColor: 'blue',
-      borderLeftColor: 'blue',
-      borderBottomColor: 'blue',
-      inputField: 'total',
-      totalHighlight: 'blue',
-      lastChanged: 'total',
-    });
-  }
 
   pressShortView = () => {
     this.clearHighlights();
@@ -169,6 +50,50 @@ class GoldenRatioCalc extends Component {
     this.clearHighlights();
     this.clearBorders();
     this.addTotalBorder();
+  }
+
+  addShortSideBorder = () => {
+    this.setState({
+      inputField: 'short',
+      borderRightColor: color1,
+      shortHighlight: color1
+    });
+  }
+
+  addLongSideBorder = () => {
+    this.setState({
+      inputField: 'long',
+      borderTopColor: color1,
+      longHighlight: color1
+    });
+  }
+
+  addTotalBorder = () => {
+    this.setState({
+      inputField: 'total',
+      borderTopColor: color1,
+      borderRightColor: color1,
+      borderLeftColor: color1,
+      borderBottomColor: color1,
+      totalHighlight: color1
+    });
+  }
+
+  clearBorders = () => {
+    this.setState({
+      borderTopColor: 'black',
+      borderRightColor: 'black',
+      borderLeftColor: 'black',
+      borderBottomColor: 'black'
+    });
+  }
+
+  clearHighlights = () => {
+    this.setState({
+      shortHighlight: 'gray',
+      longHighlight: 'gray',
+      totalHighlight: 'gray'
+    });
   }
 
   buttonPress = (text) => {
@@ -209,6 +134,86 @@ class GoldenRatioCalc extends Component {
     }
   }
 
+  onChangeShortText = (short) => {
+    if (short === '') {
+      return this.setAllToEmptyString();
+    }
+
+    const shortNum = Number(short);
+    const long = this.formatInput(shortNum * math.phi);
+    const total = this.formatInput((shortNum * 2) + (long * 2));
+
+    this.setState({ short, long, total });
+  }
+
+  onChangeLongText = (long) => {
+    if (long === '') {
+      return this.setAllToEmptyString();
+    }
+
+    const longNum = Number(long);
+    const short = this.formatInput(longNum / math.phi);
+    const total = this.formatInput((short * 2) + (longNum * 2));
+
+    this.setState({ short, long, total });
+  }
+
+  onChangeTotalText = (total) => {
+    if (total === '') {
+      return this.setAllToEmptyString();
+    }
+
+    const totalNum = Number(total);
+    const short = this.formatInput((totalNum / (1 + math.phi)));
+    const long = this.formatInput(short * math.phi);
+
+    this.setState({ short, long, total });
+  }
+
+  updateDecimals = () => {
+    const decimals = this.state.decimals === 10
+      ? 0
+      : this.state.decimals + 1;
+
+    this.setState({ decimals },
+      this.state.short === ''
+        ? this.setAllToEmptyString
+        : this.selectUpdateOninputField
+    );
+  }
+
+  selectUpdateOninputField = () => {
+    const { short, long, total, inputField } = this.state;
+
+    switch (inputField) {
+      case 'short':
+        return this.onChangeShortText(short);
+      case 'long':
+        return this.onChangeLongText(long);
+      case 'total':
+        return this.onChangeTotalText(total);
+      default:
+        return this.setAllToEmptyString();
+    }
+  }
+
+  formatInput = (number) => {
+    const { decimals } = this.state;
+
+    return isNaN(number) ? 'ERROR' : String(number.toFixed(decimals));
+  }
+
+  clearButton = () => {
+    this.setState({ inputField: null });
+    this.setAllToEmptyString();
+    this.clearHighlights();
+    this.clearBorders();
+  }
+
+  setAllToEmptyString = () => {
+    this.setState({ short: '', long: '', total: '' });
+  }
+
   render() {
     const {
       borderTopColor,
@@ -229,50 +234,44 @@ class GoldenRatioCalc extends Component {
     const totalHighlight = { backgroundColor: this.state.totalHighlight };
 
     return (
-      <View onPress={() => console.log('press view')}>
+      <View>
 
-        <View style={[constStyles.rectContainer]}>
-          <View style={[constStyles.constRect, borderStyles]}>
+        <View style={[styles.rectContainer]}>
+          <View style={[styles.constRect, borderStyles]}>
 
-            <View style={constStyles.sideInputContainer}>
-              <Text style={constStyles.text}>Short Side</Text>
-              <TouchableOpacity
-                // style={styles.textInputOpacity}
-                onPress={() => this.pressShortView()}
-              >
-                <View style={[constStyles.textInput, shortHighlight]}>
+            <View style={styles.sideInputContainer}>
+              <Text style={styles.text}>Short Side</Text>
+              <TouchableOpacity onPress={() => this.pressShortView()}>
+                <View style={[styles.textInput, shortHighlight]}>
                   <Text
-                    // adjustsFontSizeToFit
                     allowFontScaling
-                    style={constStyles.text}
+                    style={styles.text}
                     numberOfLines={3}
                   >{this.state.short}</Text>
                 </View>
               </TouchableOpacity>
             </View>
 
-            <View style={constStyles.sideInputContainer}>
-              <Text style={constStyles.text}>Long Side</Text>
+            <View style={styles.sideInputContainer}>
+              <Text style={styles.text}>Long Side</Text>
               <TouchableOpacity onPress={() => this.pressLongView()}>
-                <View style={[constStyles.textInput, longHighlight]}>
+                <View style={[styles.textInput, longHighlight]}>
                   <Text
-                    // adjustsFontSizeToFit
                     allowFontScaling
-                    style={constStyles.text}
+                    style={styles.text}
                     numberOfLines={3}
                   >{this.state.long}</Text>
                 </View>
               </TouchableOpacity>
             </View>
 
-            <View style={constStyles.sideInputContainer}>
-              <Text style={constStyles.text}>Total</Text>
+            <View style={styles.sideInputContainer}>
+              <Text style={styles.text}>Total</Text>
               <TouchableOpacity onPress={() => this.pressTotalView()}>
-                <View style={[constStyles.textInput, totalHighlight]}>
+                <View style={[styles.textInput, totalHighlight]}>
                   <Text
-                    // adjustsFontSizeToFit
                     allowFontScaling
-                    style={constStyles.text}
+                    style={styles.text}
                     numberOfLines={3}
                   >{this.state.total}</Text>
                 </View>
@@ -284,7 +283,7 @@ class GoldenRatioCalc extends Component {
 
         <NumberPad
           buttonPress={(text) => this.buttonPress(text)}
-          clearButton={() => this.setAllToEmptyString()}
+          clearButton={() => this.clearButton()}
           deleteButton={() => this.deleteButton()}
           flipCard={this.props.flipCard}
           updateDecimals={() => this.updateDecimals()}
