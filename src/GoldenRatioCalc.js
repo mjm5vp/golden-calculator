@@ -5,7 +5,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import math from 'mathjs';
-// import DismissKeyboard from 'dismissKeyboard';
 
 import NumberPad from './NumberPad';
 import styles from './styles/goldenRatioCalcStyles';
@@ -28,7 +27,7 @@ class GoldenRatioCalc extends Component {
     this.clearHighlights();
     this.clearBorders();
     this.setState(styles[sideStyles]);
-  } 
+  }
 
   clearBorders = () => {
     this.setState(styles.clearBorders);
@@ -40,26 +39,32 @@ class GoldenRatioCalc extends Component {
 
   buttonPress = (text) => {
     const { inputField } = this.state;
+
+    return inputField ? this.buttonFunction({ inputField, text }) : null;
+  }
+
+  buttonFunction = ({ inputField, text }) => {
     const func = `${inputField}TextChange`;
     const newText = this.state[inputField] + text;
 
-    this[func](newText);
+    return newText !== '' ? this[func](newText) : this.setAllToEmptyString();
   }
 
   deleteButton = () => {
     const { inputField } = this.state;
+
+    return inputField ? this.deleteFunction(inputField) : null;
+  }
+
+  deleteFunction = (inputField) => {
     const func = `${inputField}TextChange`;
     const side = this.state[inputField];
     const newText = side.substring(0, side.length - 1);
 
-    this[func](newText);
+    return newText !== '' ? this[func](newText) : this.setAllToEmptyString();
   }
 
   shortTextChange = (short) => {
-    if (short === '') {
-      return this.setAllToEmptyString();
-    }
-
     const shortNum = Number(short);
     const long = this.formatInput(shortNum * math.phi);
     const total = this.formatInput((shortNum * 2) + (long * 2));
@@ -68,10 +73,6 @@ class GoldenRatioCalc extends Component {
   }
 
   longTextChange = (long) => {
-    if (long === '') {
-      return this.setAllToEmptyString();
-    }
-
     const longNum = Number(long);
     const short = this.formatInput(longNum / math.phi);
     const total = this.formatInput((short * 2) + (longNum * 2));
@@ -80,10 +81,6 @@ class GoldenRatioCalc extends Component {
   }
 
   totalTextChange = (total) => {
-    if (total === '') {
-      return this.setAllToEmptyString();
-    }
-
     const totalNum = Number(total);
     const short = this.formatInput((totalNum / (1 + math.phi)));
     const long = this.formatInput(short * math.phi);
@@ -108,7 +105,7 @@ class GoldenRatioCalc extends Component {
     const func = `${inputField}TextChange`;
     const text = this.state[inputField];
 
-    this[func](text);
+    return inputField ? this[func](text) : null;
   }
 
   formatInput = (number) => {
