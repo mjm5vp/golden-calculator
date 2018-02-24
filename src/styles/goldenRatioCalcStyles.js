@@ -8,7 +8,38 @@ const RECT_CONTAINER_WIDTH = (SCREEN_WIDTH * 0.9) - 20;
 const TEXT_INPUT_HEIGHT = (RECT_HEIGHT / 3) - 10;
 const TEXT_INPUT_WIDTH = TEXT_INPUT_HEIGHT * math.phi;
 
+const color1 = '#f2ead5';
+
 const styles = {
+  shortStyles: {
+    inputField: 'short',
+    borderRightColor: color1,
+    shortHighlight: color1
+  },
+  longStyles: {
+    inputField: 'long',
+    borderTopColor: color1,
+    longHighlight: color1
+  },
+  totalStyles: {
+    inputField: 'total',
+    borderTopColor: color1,
+    borderRightColor: color1,
+    borderLeftColor: color1,
+    borderBottomColor: color1,
+    totalHighlight: color1
+  },
+  clearBorders: {
+    borderTopColor: 'black',
+    borderRightColor: 'black',
+    borderLeftColor: 'black',
+    borderBottomColor: 'black'
+  },
+  clearHighlights: {
+    shortHighlight: 'gray',
+    longHighlight: 'gray',
+    totalHighlight: 'gray'
+  },
   containerView: {
     flex: 1,
     justifyContent: 'center',
@@ -36,11 +67,9 @@ const styles = {
     justifyContent: 'space-around',
     alignItems: 'center',
     marginTop: 10,
-    // backgroundColor: 'red',
   },
   constRect: {
     justifyContent: 'space-around',
-    // alignItems: 'center',
     borderWidth: 5,
     width: RECT_WIDTH,
     height: RECT_HEIGHT
