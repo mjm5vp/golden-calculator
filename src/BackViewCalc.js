@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
-import { Video } from 'expo';
+import { View } from 'react-native';
 
+import { BeforeGif } from './backView/BeforeGif';
+import { ShowGif } from './backView/ShowGif';
 import NumberPad from './NumberPad';
 import goldenStyles from './styles/goldenRatioCalcStyles';
 import styles from './styles/backViewStyles';
@@ -10,32 +11,32 @@ class BackViewCalc extends Component {
   state = {
     inside: '',
     realize: '',
-    active: null,
+    inputField: null,
     result: 0,
     gifHidden: true,
     decimals: 5
   }
 
-  pressInput = (name) => {
-    this.setState({ active: name });
+  pressInput = (inputField) => {
+    this.setState({ inputField });
   }
 
   buttonPress = (text) => {
-    const { active } = this.state;
-    const newText = this.state[active] + text;
+    const { inputField } = this.state;
+    const newText = this.state[inputField] + text;
 
-    this.setState({ [active]: newText });
+    this.setState({ [inputField]: newText });
   }
 
   deleteButton = () => {
-    const { active } = this.state;
-    const newText = this.state[active].substring(0, this.state[active].length - 1);
+    const { inputField } = this.state;
+    const newText = this.state[inputField].substring(0, this.state[inputField].length - 1);
 
-    this.setState({ [active]: newText });
+    this.setState({ [inputField]: newText });
   }
 
   clearButton = () => {
-    this.setState({ active: null, gifHidden: true });
+    this.setState({ inputField: null, gifHidden: true });
     this.setAllToEmptyString();
   }
 
@@ -43,8 +44,6 @@ class BackViewCalc extends Component {
     const decimals = this.state.decimals === 10
       ? 0
       : this.state.decimals + 1;
-
-    console.log(typeof this.state.result)
 
     this.setState({ decimals },
       this.state.gifHidden === true
@@ -72,72 +71,25 @@ class BackViewCalc extends Component {
     this.setState({ inside: '', realize: '', result: 0 });
   }
 
-  renderView = () => {
-    if (this.state.gifHidden) {
-      return (
-        <View>
-          <TouchableOpacity onPress={() => this.pressInput('inside')}>
-            <View>
-              <Text>Time it takes to look inside</Text>
-              <View>
-                <Text>{this.state.inside}</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => this.pressInput('realize')}>
-            <View>
-              <Text>Time it takes to realize</Text>
-              <View>
-                <Text>{this.state.realize}</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-
-
-          <TouchableOpacity onPress={this.divide} style={styles.divideButton}>
-            <Text>DIVIDE</Text>
-          </TouchableOpacity>
-        </View>
-      );
-    }
-
-    return (
-      <View>
-        <View>
-          <Text>
-            {this.state.result} seconds to realize real guys go for real down to Mars girls.
-          </Text>
-        </View>
-
-        <Image
-          style={{ width: 100, height: 50 }}
-          source={{ uri: 'https://i.redd.it/jdqgzohp4dh01.gif' }}
-        />
-
-        <Video
-          // source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
-          source={{ uri: 'http://techslides.com/demos/sample-videos/small.mp4' }}
-          rate={1.0}
-          volume={1.0}
-          isMuted={false}
-          resizeMode="cover"
-          shouldPlay
-          isLooping
-          style={{ width: 100, height: 50 }}
-        />
-      </View>
-    );
-  }
-
   render() {
+    const { gifHidden, result, inside, realize } = this.state;
+
+    const gifView = () => {
+      return gifHidden
+        ? <BeforeGif
+            pressInput={(inputField) => this.pressInput(inputField)}
+            inside={inside}
+            realize={realize}
+            divide={this.divide}
+        />
+        : <ShowGif result={result} />;
+    };
+
     return (
       <View>
 
-        <View style={goldenStyles.rectContainer}>
-          <View style={goldenStyles.constRect}>
-            {this.renderView()}
-          </View>
+        <View style={styles.rectContainer}>
+          {gifView()}
         </View>
 
         <View>
