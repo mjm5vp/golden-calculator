@@ -63,7 +63,30 @@ const styles = {
     height: TEXT_INPUT_HEIGHT,
     width: TEXT_INPUT_WIDTH
   },
+  mediaView: {
+    borderWidth: 2,
+    borderColor: 'black',
+    borderRadius: 2
+  },
+  iconView: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  icon: {
+    // flex: 1,
+    marginLeft: 10,
+    marginRight: 10,
+    // size: 100
+    // width: VIDEO_HEIGHT / 2,
+    // height: VIDEO_HEIGHT / 2
+  },
   video: {
+    width: VIDEO_WIDTH,
+    height: VIDEO_HEIGHT
+  },
+  image: {
     width: VIDEO_WIDTH,
     height: VIDEO_HEIGHT
   }

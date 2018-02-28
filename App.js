@@ -12,7 +12,9 @@ import styles from './src/styles/appStyles';
 function cacheImages(images) {
     return images.map(image => {
       if (typeof image === 'string') {
-        return Image.prefetch(image);
+        const pre = Image.prefetch(image);
+        console.log('pre', pre);
+        return pre;
       } else {
         return Asset.fromModule(image).downloadAsync();
       }
@@ -28,10 +30,14 @@ export default class App extends React.Component {
     isReady: false,
   };
 
+  componentWillMount() {
+    this._loadAssetsAsync();
+  }
+
   async _loadAssetsAsync() {
     const imageAssets = cacheImages([
-      'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
-      'https://i.redd.it/jdqgzohp4dh01.gif'
+      require('./assets/goldenImage.png'),
+      'https://s3.amazonaws.com/golden-calculator-video/golden-calculator.png'
     ]);
 
     const fontAssets = cacheFonts([FontAwesome.font]);

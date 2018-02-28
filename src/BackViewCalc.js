@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, ImageBackground } from 'react-native';
+import { Icon } from 'react-native-elements';
 
-import { BeforeGif } from './backView/BeforeGif';
-import { ShowGif } from './backView/ShowGif';
+import BeforeVideo from './backView/BeforeVideo';
+import ShowVideo from './backView/ShowVideo';
 import NumberPad from './NumberPad';
 import goldenStyles from './styles/goldenRatioCalcStyles';
 import styles from './styles/backViewStyles';
@@ -60,9 +61,7 @@ class BackViewCalc extends Component {
     const { inside, realize, decimals } = this.state;
     const result = Number((Number(inside) / Number(realize)).toFixed(decimals));
 
-    if (isNaN(result)) {
-      return;
-    }
+    if (isNaN(result)) return;
 
     this.setState({ result, gifHidden: false });
   }
@@ -72,17 +71,19 @@ class BackViewCalc extends Component {
   }
 
   render() {
-    const { gifHidden, result, inside, realize } = this.state;
+    const { gifHidden, result, inside, realize, image } = this.state;
 
     const gifView = () => {
       return gifHidden
-        ? <BeforeGif
+        ? <BeforeVideo
             pressInput={(inputField) => this.pressInput(inputField)}
             inside={inside}
             realize={realize}
             divide={this.divide}
         />
-        : <ShowGif result={result} />;
+        : <ShowVideo
+          result={result}
+        />;
     };
 
     return (

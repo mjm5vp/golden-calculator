@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import styles from '../styles/backViewStyles';
 import goldenStyles from '../styles/goldenRatioCalcStyles';
 
-class BeforeGif extends Component {
+class BeforeVideo extends Component {
   componentWillMount() {
     this.clearHighlights();
   }
@@ -66,7 +66,11 @@ class BeforeGif extends Component {
         </TouchableOpacity>
         </View>
 
-        <TouchableOpacity onPress={divide} style={styles.divideButton}>
+        <TouchableOpacity
+          disabled={!inside || !realize}
+          onPress={divide}
+          style={styles.divideButton}
+        >
           <Text>DIVIDE</Text>
         </TouchableOpacity>
 
@@ -75,4 +79,4 @@ class BeforeGif extends Component {
   }
 }
 
-export { BeforeGif };
+export default BeforeVideo;
