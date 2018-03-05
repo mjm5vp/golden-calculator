@@ -20,26 +20,26 @@ class NumberPad extends Component {
     return (
       <View style={styles.container}>
 
-        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+        <View style={styles.rowContainer}>
           <Button onPress={() => buttonPress('7')}>7</Button>
           <Button onPress={() => buttonPress('8')}>8</Button>
           <Button onPress={() => buttonPress('9')}>9</Button>
         </View>
 
-        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+        <View style={styles.rowContainer}>
           <Button onPress={() => buttonPress('4')}>4</Button>
           <Button onPress={() => buttonPress('5')}>5</Button>
           <Button onPress={() => buttonPress('6')}>6</Button>
         </View>
 
-        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+        <View style={styles.rowContainer}>
           <Button onPress={() => buttonPress('1')}>1</Button>
           <Button onPress={() => buttonPress('2')}>2</Button>
           <Button onPress={() => buttonPress('3')}>3</Button>
 
         </View>
 
-        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+        <View style={styles.rowContainer}>
           <IconButton onPress={() => buttonPress('.')}>
             <Icon
               name='dot-single'
@@ -57,9 +57,14 @@ class NumberPad extends Component {
           </IconButton>
         </View>
 
-        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+        <View style={styles.rowContainer}>
           <IconButton onPress={() => updateDecimals()}>
-            <Text style={{ color: 'white' }}>Decimals:</Text>
+            <Text
+              adjustsFontSizeToFit
+              numberOfLines={1}
+              style={styles.decimalsText}
+            >Decimals:
+            </Text>
             <Text style={{ color: 'white' }}>{decimals}</Text>
           </IconButton>
           <Button onPress={() => clearButton()}>Clear</Button>

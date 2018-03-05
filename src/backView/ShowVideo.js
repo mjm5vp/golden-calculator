@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, ImageBackground, Image } from 'react-native';
+import { View, Text, ImageBackground } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { Video } from 'expo';
-import goldenImage from '../../assets/goldenImage.png'
+import goldenImage from '../../assets/goldenImage.png';
 
 import styles from '../styles/backViewStyles';
 
@@ -44,7 +44,7 @@ class ShowVideo extends Component {
     const iconName = muted ? 'volume-mute' : 'volume-high';
 
     return (
-      <ImageBackground 
+      <ImageBackground
         source={goldenImage}
         style={styles.image}
       >

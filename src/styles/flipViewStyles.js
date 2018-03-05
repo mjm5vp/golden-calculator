@@ -1,9 +1,4 @@
-import { Dimensions } from 'react-native';
-import math from 'mathjs';
-
-const SCREEN_WIDTH = Dimensions.get('window').width;
-const calcWidth = SCREEN_WIDTH * 0.9;
-const calcHeight = calcWidth * math.phi;
+import * as constants from './constants';
 
 const styles = {
   container: {
@@ -12,13 +7,9 @@ const styles = {
     justifyContent: 'center',
   },
   flipCard: {
-    // zIndex: 2,
-    // alignItems: 'center',
-    // justifyContent: 'center',
     backfaceVisibility: 'hidden',
   },
   flipCardBack: {
-    // zIndex: 3,
     position: 'absolute',
     top: 0,
   },
@@ -29,20 +20,32 @@ const styles = {
     fontWeight: 'bold',
   },
   calc: {
-    width: calcWidth,
-    height: calcHeight,
-    backgroundColor: '#D4AF37',
-    // borderRadius: 10,
+    width: constants.CALC_WIDTH,
+    height: constants.CALC_HEIGHT,
+    backgroundColor: constants.gold,
     borderColor: 'black',
     borderWidth: 10,
-    // borderTopWidth: 10,
-    // borderTopColor: 'blue',
-    marginTop: 50,
+    marginTop: 10,
+    // marginTop: constants.CALC_SCREEN_DIFF_HEIGHT / 2,
     shadowColor: '#000',
     shadowOffset: { width: 5, height: 10 },
     shadowOpacity: 0.6,
     shadowRadius: 2,
-    elevation: 1,
+    elevation: 10,
+  },
+  titleView: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: constants.CALC_WIDTH,
+    height: constants.CALC_SCREEN_DIFF_HEIGHT / 2
+  },
+  title: {
+    width: constants.CALC_WIDTH,
+    height: constants.CALC_SCREEN_DIFF_HEIGHT / 2,
+    fontSize: 50,
+    flex: 1,
+    color: 'gold'
+    // fontSize: constants.CALC_SCREEN_DIFF_HEIGHT / 2
   }
 };
 

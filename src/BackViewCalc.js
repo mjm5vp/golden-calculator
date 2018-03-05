@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { View, ImageBackground } from 'react-native';
-import { Icon } from 'react-native-elements';
+import { View } from 'react-native';
 
 import BeforeVideo from './backView/BeforeVideo';
 import ShowVideo from './backView/ShowVideo';
 import NumberPad from './NumberPad';
 import goldenStyles from './styles/goldenRatioCalcStyles';
-import styles from './styles/backViewStyles';
 
 class BackViewCalc extends Component {
   state = {
@@ -47,7 +45,7 @@ class BackViewCalc extends Component {
       : this.state.decimals + 1;
 
     this.setState({ decimals },
-      this.state.gifHidden === true
+      this.state.gifHidden
         ? null
         : this.divide
     );
@@ -71,7 +69,7 @@ class BackViewCalc extends Component {
   }
 
   render() {
-    const { gifHidden, result, inside, realize, image } = this.state;
+    const { gifHidden, result, inside, realize } = this.state;
 
     const gifView = () => {
       return gifHidden
@@ -89,7 +87,7 @@ class BackViewCalc extends Component {
     return (
       <View>
 
-        <View style={styles.rectContainer}>
+        <View style={goldenStyles.rectContainer}>
           {gifView()}
         </View>
 

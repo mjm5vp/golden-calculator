@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Animated, View } from 'react-native';
+import { Animated, View, Text } from 'react-native';
 
 import GoldenRatioCalc from './GoldenRatioCalc';
 import BackViewCalc from './BackViewCalc';
@@ -70,6 +70,15 @@ class FlipView extends Component {
 
     return (
       <View style={styles.container}>
+        <View style={styles.titleView}>
+          <Text
+            adjustsFontSizeToFit
+            numberOfLines={1}
+            style={styles.title}
+          >
+            GOLDEN CALCULATOR
+          </Text>
+        </View>
         <View>
           <Animated.View style={[styles.flipCard, frontAnimatedStyle, styles.calc]}>
             <GoldenRatioCalc

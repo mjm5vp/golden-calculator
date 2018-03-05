@@ -9,17 +9,16 @@ import styles from './src/styles/appStyles';
 
 // Image.prefetch('https://i.redd.it/jdqgzohp4dh01.gif');
 
-function cacheImages(images) {
+const cacheImages = (images) => {
     return images.map(image => {
       if (typeof image === 'string') {
         const pre = Image.prefetch(image);
-        console.log('pre', pre);
         return pre;
-      } else {
-        return Asset.fromModule(image).downloadAsync();
       }
+
+    return Asset.fromModule(image).downloadAsync();
     });
-  }
+  };
 
   function cacheFonts(fonts) {
     return fonts.map(font => Font.loadAsync(font));
@@ -31,10 +30,10 @@ export default class App extends React.Component {
   };
 
   componentWillMount() {
-    this._loadAssetsAsync();
+    this.loadAssetsAsync();
   }
 
-  async _loadAssetsAsync() {
+  async loadAssetsAsync() {
     const imageAssets = cacheImages([
       require('./assets/goldenImage.png'),
       'https://s3.amazonaws.com/golden-calculator-video/golden-calculator.png'
@@ -49,7 +48,7 @@ export default class App extends React.Component {
     if (!this.state.isReady) {
       return (
         <AppLoading
-          startAsync={this._loadAssetsAsync}
+          startAsync={this.loadAssetsAsync}
           onFinish={() => this.setState({ isReady: true })}
           onError={console.warn}
         />

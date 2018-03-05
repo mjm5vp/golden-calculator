@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Dimensions } from 'react-native';
-import math from 'mathjs';
+import { View, Text, TouchableOpacity } from 'react-native';
+import * as constants from '../styles/constants';
 
 const Button = ({ onPress, children }) => {
   const { buttonStyle, textStyle } = styles;
@@ -25,32 +25,22 @@ const IconButton = ({ onPress, children }) => {
   );
 };
 
-const SCREEN_WIDTH = Dimensions.get('window').width;
-const RECT_CONTAINER_WIDTH = (SCREEN_WIDTH * 0.9) - 20;
-const BUTTON_WIDTH = (RECT_CONTAINER_WIDTH * 0.7) / 3;
-const BUTTON_HEIGHT = BUTTON_WIDTH / math.phi;
-
 const styles = {
-  container: {
-    height: 270,
-    width: RECT_CONTAINER_WIDTH,
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    marginTop: 10,
-  },
   buttonStyle: {
     backgroundColor: 'black',
     borderWidth: 2,
     borderRadius: 2,
     borderColor: 'gray',
-    width: BUTTON_WIDTH,
-    height: BUTTON_HEIGHT,
-    margin: 10,
+    width: constants.BUTTON_WIDTH,
+    height: constants.BUTTON_HEIGHT,
+    marginLeft: 5,
+    marginRight: 5,
     justifyContent: 'center',
     alignItems: 'center',
   },
   textStyle: {
-    color: 'white'
+    color: 'white',
+    fontSize: constants.BUTTON_HEIGHT / 3
   },
   viewStyle: {
     justifyContent: 'center',
