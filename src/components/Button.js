@@ -40,7 +40,8 @@ const styles = {
   },
   textStyle: {
     color: 'white',
-    fontSize: constants.BUTTON_HEIGHT / 3
+    fontSize: constants.BUTTON_HEIGHT / 3,
+    fontFamily: 'goldenFont',
   },
   viewStyle: {
     justifyContent: 'center',

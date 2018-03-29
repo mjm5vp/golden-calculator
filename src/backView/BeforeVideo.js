@@ -41,7 +41,12 @@ class BeforeVideo extends Component {
     return (
       <View style={styles.constRect}>
         <View style={[styles.sideInputContainer]}>
-          <Text numberOfLines={2} style={styles.text}>Time it took to look inside (seconds)</Text>
+          <Text
+            numberOfLines={2}
+            style={styles.labelText}
+          >
+            Time it took to look inside (seconds)
+          </Text>
           <TouchableOpacity onPress={this.pressInside}>
             <View style={[goldenStyles.textInput, insideHighlight]}>
               <Text
@@ -54,7 +59,7 @@ class BeforeVideo extends Component {
         </View>
 
         <View style={styles.sideInputContainer}>
-          <Text numberOfLines={2} style={styles.text}>Time it took to realize (seconds)</Text>
+          <Text numberOfLines={2} style={styles.labelText}>Time it took to realize (seconds)</Text>
           <TouchableOpacity onPress={this.pressRealize}>
             <View style={[goldenStyles.textInput, realizeHighlight]}>
               <Text
@@ -71,7 +76,7 @@ class BeforeVideo extends Component {
           onPress={divide}
           style={styles.divideButton}
         >
-          <Text>DIVIDE</Text>
+          <Text style={styles.divideButtonText}>DIVIDE</Text>
         </TouchableOpacity>
 
       </View>

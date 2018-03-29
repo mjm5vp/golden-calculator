@@ -149,7 +149,7 @@ class GoldenRatioCalc extends Component {
           <View style={[styles.constRect, borderStyles]}>
 
             <View style={styles.sideInputContainer}>
-              <Text style={styles.text}>Short Side</Text>
+              <Text style={styles.labelText}>Short Side</Text>
               <TouchableOpacity onPress={() => this.pressView('shortStyles')}>
                 <View style={[styles.textInput, shortHighlight]}>
                   <Text
@@ -162,7 +162,7 @@ class GoldenRatioCalc extends Component {
             </View>
 
             <View style={styles.sideInputContainer}>
-              <Text style={styles.text}>Long Side</Text>
+              <Text style={styles.labelText}>Long Side</Text>
               <TouchableOpacity onPress={() => this.pressView('longStyles')}>
                 <View style={[styles.textInput, longHighlight]}>
                   <Text
@@ -175,7 +175,7 @@ class GoldenRatioCalc extends Component {
             </View>
 
             <View style={styles.sideInputContainer}>
-              <Text style={styles.text}>Total</Text>
+              <Text style={styles.labelText}>Total</Text>
               <TouchableOpacity onPress={() => this.pressView('totalStyles')}>
                 <View style={[styles.textInput, totalHighlight]}>
                   <Text

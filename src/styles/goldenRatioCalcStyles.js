@@ -28,9 +28,9 @@ const styles = {
     borderBottomColor: 'black'
   },
   clearHighlights: {
-    shortHighlight: 'gray',
-    longHighlight: 'gray',
-    totalHighlight: 'gray'
+    shortHighlight: 'black',
+    longHighlight: 'black',
+    totalHighlight: 'black'
   },
   containerView: {
     flex: 1,
@@ -73,15 +73,20 @@ const styles = {
     height: constants.TEXT_INPUT_HEIGHT,
     justifyContent: 'center',
     borderWidth: 2,
-    borderColor: 'black',
+    borderColor: 'gray',
     borderRadius: 2,
-    // width: 100,
-    // height: 50,
-    // marginTop: 10,
-    backgroundColor: 'green'
+  },
+  labelText: {
+    fontSize: (constants.TEXT_INPUT_HEIGHT / 3) - 2,
+    fontWeight: '800',
+    fontFamily: 'goldenFont',
+    color: 'black'
   },
   text: {
-    fontSize: (constants.TEXT_INPUT_HEIGHT / 3) - 2
+    fontSize: (constants.TEXT_INPUT_HEIGHT / 3) - 2,
+    fontWeight: '800',
+    fontFamily: 'orbitron',
+    color: 'green'
   }
 };
 

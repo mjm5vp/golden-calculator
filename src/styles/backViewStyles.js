@@ -12,6 +12,11 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  }, 
+  labelText: {
+    width: constants.RECT_WIDTH / 2,
+    fontSize: (constants.TEXT_INPUT_HEIGHT / 3.5) - 5,
+    fontFamily: 'goldenFont'
   },
   text: {
     width: constants.RECT_WIDTH / 2,
@@ -43,6 +48,10 @@ const styles = {
     borderRadius: 2,
     height: constants.TEXT_INPUT_HEIGHT,
     width: constants.TEXT_INPUT_WIDTH
+  },
+  divideButtonText: {
+    fontSize: (constants.TEXT_INPUT_HEIGHT / 3) - 5,
+    fontFamily: 'goldenFont'
   },
   mediaView: {
     borderWidth: 2,

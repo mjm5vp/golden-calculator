@@ -1,9 +1,15 @@
 import React from 'react';
 import { View, TouchableWithoutFeedback, Image } from 'react-native';
 import { AppLoading, Asset, Font } from 'expo';
-import { FontAwesome } from '@expo/vector-icons';
 
-// import GoldenRatioCalc from './src/GoldenRatioCalc';
+// Images
+import goldenImage from './assets/goldenImage.png';
+
+// Fonts
+import zaio from './assets/fonts/Zaio.ttf';
+import orbitron from './assets/fonts/Orbitron-Regular.ttf';
+import goldenFont from './assets/fonts/Golden-Ratio-Font.ttf';
+
 import FlipView from './src/FlipView';
 import styles from './src/styles/appStyles';
 
@@ -20,9 +26,9 @@ const cacheImages = (images) => {
     });
   };
 
-  function cacheFonts(fonts) {
-    return fonts.map(font => Font.loadAsync(font));
-  }
+const cacheFonts = (fonts) => {
+  return fonts.map(font => Font.loadAsync(font));
+};
 
 export default class App extends React.Component {
   state = {
@@ -35,11 +41,11 @@ export default class App extends React.Component {
 
   async loadAssetsAsync() {
     const imageAssets = cacheImages([
-      require('./assets/goldenImage.png'),
+      goldenImage,
       'https://s3.amazonaws.com/golden-calculator-video/golden-calculator.png'
     ]);
 
-    const fontAssets = cacheFonts([FontAwesome.font]);
+    const fontAssets = cacheFonts([{ zaio, orbitron, goldenFont }]);
 
     await Promise.all([...imageAssets, ...fontAssets]);
   }

@@ -15,6 +15,7 @@ const styles = {
   },
   decimalsText: {
     fontSize: constants.BUTTON_HEIGHT / 3,
+    fontFamily: 'goldenFont',
     color: 'white'
   }
 };

@@ -37,14 +37,16 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     width: constants.CALC_WIDTH,
-    height: constants.CALC_SCREEN_DIFF_HEIGHT / 2
+    height: constants.CALC_SCREEN_DIFF_HEIGHT / 2,
   },
   title: {
     width: constants.CALC_WIDTH,
     height: constants.CALC_SCREEN_DIFF_HEIGHT / 2,
-    fontSize: 50,
+    fontSize: 100,
     flex: 1,
-    color: 'gold'
+    color: 'gold',
+    fontFamily: 'zaio',
+    textAlign: 'center'
     // fontSize: constants.CALC_SCREEN_DIFF_HEIGHT / 2
   }
 };

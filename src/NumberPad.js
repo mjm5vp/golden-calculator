@@ -65,7 +65,7 @@ class NumberPad extends Component {
               style={styles.decimalsText}
             >Decimals:
             </Text>
-            <Text style={{ color: 'white' }}>{decimals}</Text>
+            <Text style={styles.decimalsText}>{decimals}</Text>
           </IconButton>
           <Button onPress={() => clearButton()}>Clear</Button>
           <Button onPress={() => flipCard()}>Flip</Button>
