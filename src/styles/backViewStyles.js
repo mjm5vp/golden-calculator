@@ -12,7 +12,7 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-  }, 
+  },
   labelText: {
     width: constants.RECT_WIDTH / 2,
     fontSize: (constants.TEXT_INPUT_HEIGHT / 3.5) - 5,
