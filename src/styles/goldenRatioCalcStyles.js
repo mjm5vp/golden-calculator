@@ -56,7 +56,7 @@ const styles = {
 		justifyContent: 'space-around',
 		borderWidth: 8,
 		borderRadius: 5,
-		borderColor: colors.myGold.black,
+		// borderColor: colors.myGold.black,
 		shadowOffset: { height: 1 },
 		shadowColor: 'black',
 		shadowOpacity: 1.0,
