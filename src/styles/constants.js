@@ -4,7 +4,6 @@ import math from 'mathjs';
 //Colors
 export const gold = '#D4AF37';
 
-
 //Screen
 export const SCREEN_WIDTH = Dimensions.get('window').width;
 export const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -14,9 +13,9 @@ export const CALC_WIDTH = SCREEN_WIDTH * 0.9;
 export const CALC_HEIGHT = CALC_WIDTH * math.phi;
 export const RECT_WIDTH = SCREEN_WIDTH * 0.8;
 export const RECT_HEIGHT = RECT_WIDTH / math.phi;
-export const RECT_CONTAINER_WIDTH = CALC_WIDTH - 20;
+export const RECT_CONTAINER_WIDTH = CALC_WIDTH - 8;
 // export const RECT_CONTAINER_HEIGHT = CALC_HEIGHT - 20;
-export const TEXT_INPUT_HEIGHT = (RECT_HEIGHT / 3) - 10;
+export const TEXT_INPUT_HEIGHT = RECT_HEIGHT / 3 - 15;
 export const TEXT_INPUT_WIDTH = TEXT_INPUT_HEIGHT * math.phi;
 
 //Video

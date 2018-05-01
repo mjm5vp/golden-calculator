@@ -1,36 +1,40 @@
 import * as constants from './constants';
+import colors from './colors';
 
-const color1 = '#f2ead5';
+const borderColor = colors.myGold.black;
+const inputColor = colors.myGold.grey;
+const borderHighlight = colors.t4k.e;
+const highlight = colors.t4k.e;
 
 const styles = {
 	shortStyles: {
 		inputField: 'short',
-		borderRightColor: color1,
-		shortHighlight: color1
+		borderRightColor: borderHighlight,
+		shortHighlight: highlight
 	},
 	longStyles: {
 		inputField: 'long',
-		borderTopColor: color1,
-		longHighlight: color1
+		borderTopColor: borderHighlight,
+		longHighlight: highlight
 	},
 	totalStyles: {
 		inputField: 'total',
-		borderTopColor: color1,
-		borderRightColor: color1,
-		borderLeftColor: color1,
-		borderBottomColor: color1,
-		totalHighlight: color1
+		borderTopColor: borderHighlight,
+		borderRightColor: borderHighlight,
+		borderLeftColor: borderHighlight,
+		borderBottomColor: borderHighlight,
+		totalHighlight: highlight
 	},
 	clearBorders: {
-		borderTopColor: 'black',
-		borderRightColor: 'black',
-		borderLeftColor: 'black',
-		borderBottomColor: 'black'
+		borderTopColor: borderColor,
+		borderRightColor: borderColor,
+		borderLeftColor: borderColor,
+		borderBottomColor: borderColor
 	},
 	clearHighlights: {
-		shortHighlight: 'black',
-		longHighlight: 'black',
-		totalHighlight: 'black'
+		shortHighlight: inputColor,
+		longHighlight: inputColor,
+		totalHighlight: inputColor
 	},
 	containerView: {
 		flex: 1,
@@ -38,11 +42,7 @@ const styles = {
 		alignItems: 'center'
 	},
 	formInputContainer: {
-		backgroundColor: 'blue',
 		width: '50%'
-	},
-	formInputInput: {
-		color: 'red'
 	},
 	rectContainer: {
 		height: constants.RECT_HEIGHT,
@@ -54,10 +54,15 @@ const styles = {
 	},
 	constRect: {
 		justifyContent: 'space-around',
-		borderWidth: 5,
+		borderWidth: 8,
+		borderRadius: 5,
+		borderColor: colors.myGold.black,
+		shadowOffset: { height: 1 },
+		shadowColor: 'black',
+		shadowOpacity: 1.0,
 		width: constants.RECT_WIDTH,
 		height: constants.RECT_HEIGHT,
-		backgroundColor: 'gray'
+		backgroundColor: colors.rectBackground
 	},
 	sideInputContainer: {
 		flexDirection: 'row',
@@ -71,21 +76,27 @@ const styles = {
 		width: constants.TEXT_INPUT_WIDTH,
 		height: constants.TEXT_INPUT_HEIGHT,
 		justifyContent: 'center',
-		borderWidth: 2,
-		borderColor: 'gray',
-		borderRadius: 2
+		shadowOffset: { height: 1 },
+		shadowColor: colors.gb.black,
+		shadowOpacity: 1.0
+		// borderWidth: 2,
+		// borderColor: colors.t4k.c,
+		// borderRadius: 2
 	},
 	labelText: {
 		fontSize: constants.TEXT_INPUT_HEIGHT / 3 - 2,
-		fontWeight: '800',
+		fontWeight: '900',
 		fontFamily: 'goldenFont',
-		color: 'black'
+		color: colors.gb.black
+		// textShadowOffset: { height: 1, width: 1 },
+		// textShadowColor: colors.gb.white,
+		// textShadowRadius: 2
 	},
 	text: {
 		fontSize: constants.TEXT_INPUT_HEIGHT / 3 - 2,
 		fontWeight: '800',
-		fontFamily: 'orbitron',
-		color: 'green'
+		fontFamily: 'zaio',
+		color: colors.gb.darkestGold
 	}
 };
 

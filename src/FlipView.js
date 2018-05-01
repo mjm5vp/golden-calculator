@@ -4,7 +4,7 @@ import { Animated, View, Image } from 'react-native';
 import GoldenRatioCalc from './GoldenRatioCalc';
 import BackViewCalc from './BackViewCalc';
 import styles from './styles/flipViewStyles';
-import title from '../assets/title.png';
+// import title from '../assets/title.png';
 
 class FlipView extends Component {
 	state = {
@@ -67,9 +67,9 @@ class FlipView extends Component {
 
 		return (
 			<View style={styles.container}>
-				<View style={styles.titleView}>
+				{/* <View style={styles.titleView}>
 					<Image source={title} style={styles.title} resizeMode="contain" />
-				</View>
+				</View> */}
 				<View>
 					<Animated.View
 						style={[styles.flipCard, frontAnimatedStyle, styles.calc]}

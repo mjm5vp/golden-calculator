@@ -1,4 +1,5 @@
 import * as constants from './constants';
+import colors from './colors';
 
 const styles = {
 	container: {
@@ -22,13 +23,14 @@ const styles = {
 	calc: {
 		width: constants.CALC_WIDTH,
 		height: constants.CALC_HEIGHT,
-		backgroundColor: constants.gold,
-		borderColor: 'black',
-		borderWidth: 10,
+		backgroundColor: colors.t4k.c,
+		borderColor: colors.gb.black,
+		borderWidth: 4,
+		borderRadius: 10,
 		marginTop: 10,
 		// marginTop: constants.CALC_SCREEN_DIFF_HEIGHT / 2,
-		shadowColor: '#000',
-		shadowOffset: { width: 5, height: 10 },
+		shadowColor: colors.gb.black,
+		shadowOffset: { height: 10 },
 		shadowOpacity: 0.6,
 		shadowRadius: 2,
 		elevation: 10
