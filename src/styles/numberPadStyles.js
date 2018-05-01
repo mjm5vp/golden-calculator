@@ -14,9 +14,10 @@ const styles = {
 		justifyContent: 'center'
 	},
 	decimalsText: {
-		fontSize: constants.BUTTON_HEIGHT / 3,
+		fontSize: constants.BUTTON_HEIGHT / 4,
+		// fontSize: 10,
 		fontFamily: 'orbitron',
-		color: 'white'
+		color: colors.gb.white
 	}
 };
 

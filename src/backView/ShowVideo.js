@@ -81,11 +81,16 @@ class ShowVideo extends Component {
 		) : null;
 
 		const buttonView = !showResult ? (
-			<TouchableOpacity onPress={pressBottomButton} style={styles.videoButton}>
-				<Text style={styles.divideButtonText}>
-					You need a Golden Calculator to divide...
-				</Text>
-			</TouchableOpacity>
+			<View style={styles.elevationButton}>
+				<TouchableOpacity
+					onPress={pressBottomButton}
+					style={styles.videoButton}
+				>
+					<Text style={styles.divideButtonText}>
+						You need a Golden Calculator to divide...
+					</Text>
+				</TouchableOpacity>
+			</View>
 		) : null;
 
 		return (

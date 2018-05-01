@@ -71,7 +71,10 @@ const styles = {
 		marginLeft: 30,
 		marginRight: 30
 	},
-	textInputOpacity: {},
+	elevationInput: {
+		borderTopWidth: 0,
+		elevation: 10
+	},
 	textInput: {
 		width: constants.TEXT_INPUT_WIDTH,
 		height: constants.TEXT_INPUT_HEIGHT,
@@ -79,13 +82,14 @@ const styles = {
 		shadowOffset: { height: 1 },
 		shadowColor: colors.gb.black,
 		shadowOpacity: 1.0
+
 		// borderWidth: 2,
 		// borderColor: colors.t4k.c,
 		// borderRadius: 2
 	},
 	labelText: {
 		fontSize: constants.TEXT_INPUT_HEIGHT / 3 - 2,
-		fontWeight: '900',
+		fontWeight: '200',
 		fontFamily: 'goldenFont',
 		color: colors.gb.black
 		// textShadowOffset: { height: 1, width: 1 },

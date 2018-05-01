@@ -13,11 +13,13 @@ const Button = ({ onPress, children }) => {
 };
 
 const IconButton = ({ onPress, children }) => {
-	const { buttonStyle, viewStyle } = styles;
+	const { elevation, buttonStyle, viewStyle } = styles;
 	return (
-		<TouchableOpacity onPress={onPress} style={buttonStyle}>
-			<View style={viewStyle}>{children}</View>
-		</TouchableOpacity>
+		<View style={elevation}>
+			<TouchableOpacity onPress={onPress} style={buttonStyle}>
+				<View style={viewStyle}>{children}</View>
+			</TouchableOpacity>
+		</View>
 	);
 };
 
@@ -46,6 +48,10 @@ const styles = {
 	viewStyle: {
 		justifyContent: 'center',
 		alignItems: 'center'
+	},
+	elevation: {
+		borderTopWidth: 0,
+		elevation: 5
 	}
 };
 

@@ -45,34 +45,38 @@ class BeforeVideo extends Component {
 					<Text numberOfLines={2} style={styles.labelText}>
 						Time it took to look inside (seconds)
 					</Text>
-					<TouchableOpacity onPress={this.pressInside}>
-						<View style={[goldenStyles.textInput, insideHighlight]}>
-							<Text
-								allowFontScaling
-								style={goldenStyles.text}
-								numberOfLines={3}
-							>
-								{inside}
-							</Text>
-						</View>
-					</TouchableOpacity>
+					<View style={styles.elevationInput}>
+						<TouchableOpacity onPress={this.pressInside}>
+							<View style={[goldenStyles.textInput, insideHighlight]}>
+								<Text
+									allowFontScaling
+									style={goldenStyles.text}
+									numberOfLines={3}
+								>
+									{inside}
+								</Text>
+							</View>
+						</TouchableOpacity>
+					</View>
 				</View>
 
 				<View style={styles.sideInputContainer}>
 					<Text numberOfLines={2} style={styles.labelText}>
 						Time it took to realize (seconds)
 					</Text>
-					<TouchableOpacity onPress={this.pressRealize}>
-						<View style={[goldenStyles.textInput, realizeHighlight]}>
-							<Text
-								allowFontScaling
-								style={goldenStyles.text}
-								numberOfLines={3}
-							>
-								{realize}
-							</Text>
-						</View>
-					</TouchableOpacity>
+					<View style={styles.elevationInput}>
+						<TouchableOpacity onPress={this.pressRealize}>
+							<View style={[goldenStyles.textInput, realizeHighlight]}>
+								<Text
+									allowFontScaling
+									style={goldenStyles.text}
+									numberOfLines={3}
+								>
+									{realize}
+								</Text>
+							</View>
+						</TouchableOpacity>
+					</View>
 				</View>
 
 				<TouchableOpacity

@@ -144,35 +144,53 @@ class GoldenRatioCalc extends Component {
 					<View style={[styles.constRect, borderStyles]}>
 						<View style={styles.sideInputContainer}>
 							<Text style={styles.labelText}>Short Side</Text>
-							<TouchableOpacity onPress={() => this.pressView('shortStyles')}>
-								<View style={[styles.textInput, shortHighlight]}>
-									<Text allowFontScaling style={styles.text} numberOfLines={3}>
-										{this.state.short}
-									</Text>
-								</View>
-							</TouchableOpacity>
+							<View style={styles.elevationInput}>
+								<TouchableOpacity onPress={() => this.pressView('shortStyles')}>
+									<View style={[styles.textInput, shortHighlight]}>
+										<Text
+											allowFontScaling
+											style={styles.text}
+											numberOfLines={3}
+										>
+											{this.state.short}
+										</Text>
+									</View>
+								</TouchableOpacity>
+							</View>
 						</View>
 
 						<View style={styles.sideInputContainer}>
 							<Text style={styles.labelText}>Long Side</Text>
-							<TouchableOpacity onPress={() => this.pressView('longStyles')}>
-								<View style={[styles.textInput, longHighlight]}>
-									<Text allowFontScaling style={styles.text} numberOfLines={3}>
-										{this.state.long}
-									</Text>
-								</View>
-							</TouchableOpacity>
+							<View style={styles.elevationInput}>
+								<TouchableOpacity onPress={() => this.pressView('longStyles')}>
+									<View style={[styles.textInput, longHighlight]}>
+										<Text
+											allowFontScaling
+											style={styles.text}
+											numberOfLines={3}
+										>
+											{this.state.long}
+										</Text>
+									</View>
+								</TouchableOpacity>
+							</View>
 						</View>
 
 						<View style={styles.sideInputContainer}>
 							<Text style={styles.labelText}>Total</Text>
-							<TouchableOpacity onPress={() => this.pressView('totalStyles')}>
-								<View style={[styles.textInput, totalHighlight]}>
-									<Text allowFontScaling style={styles.text} numberOfLines={3}>
-										{this.state.total}
-									</Text>
-								</View>
-							</TouchableOpacity>
+							<View style={styles.elevationInput}>
+								<TouchableOpacity onPress={() => this.pressView('totalStyles')}>
+									<View style={[styles.textInput, totalHighlight]}>
+										<Text
+											allowFontScaling
+											style={styles.text}
+											numberOfLines={3}
+										>
+											{this.state.total}
+										</Text>
+									</View>
+								</TouchableOpacity>
+							</View>
 						</View>
 					</View>
 				</View>

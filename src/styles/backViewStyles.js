@@ -19,9 +19,10 @@ const styles = {
 		alignItems: 'center'
 	},
 	labelText: {
-		width: constants.RECT_WIDTH / 2,
-		fontSize: constants.TEXT_INPUT_HEIGHT / 3.5 - 5,
-		fontFamily: 'goldenFont'
+		width: constants.RECT_WIDTH / 2 - 10,
+		fontSize: constants.TEXT_INPUT_HEIGHT / 3.5 - 3,
+		fontFamily: 'goldenFont',
+		marginRight: 10
 	},
 	text: {
 		// width: constants.RECT_WIDTH / 2,
@@ -45,10 +46,10 @@ const styles = {
 		shadowOpacity: 1.0
 	},
 	insideHighlight: {
-		backgroundColor: colors.t4k.e
+		backgroundColor: highlight
 	},
 	realizeHighlight: {
-		backgroundColor: colors.t4k.e
+		backgroundColor: highlight
 	},
 	clearHighlights: {
 		backgroundColor: inputColor
@@ -114,6 +115,14 @@ const styles = {
 	image: {
 		width: constants.VIDEO_WIDTH,
 		height: constants.VIDEO_HEIGHT
+	},
+	elevationInput: {
+		borderTopWidth: 0,
+		elevation: 10
+	},
+	elevationButton: {
+		borderTopWidth: 0,
+		elevation: 1
 	}
 };
 
