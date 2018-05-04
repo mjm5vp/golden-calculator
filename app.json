@@ -20,7 +20,8 @@
 			"bundleIdentifier": "com.mjm5vp.golden-calculator"
 		},
 		"android": {
-			"package": "com.mjm5vp.goldencalculator"
+			"package": "com.mjm5vp.goldencalculator",
+			"permissions": []
 		}
 	}
 }
