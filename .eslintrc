@@ -4,5 +4,6 @@
     "arrow-body-style": 0,
     "react/sort-comp": 0,
     "no-mixed-operators": 0,
+    "semi": "off"
   }
 }
