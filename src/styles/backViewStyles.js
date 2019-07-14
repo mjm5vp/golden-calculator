@@ -20,14 +20,14 @@ const styles = {
 	},
 	labelText: {
 		width: constants.RECT_WIDTH / 2 - 10,
-		fontSize: constants.TEXT_INPUT_HEIGHT / 3.5 - 3,
+		fontSize: constants.TEXT_INPUT_HEIGHT / 3.5 - 5,
 		fontFamily: 'goldenFont',
 		marginRight: 10
 	},
 	text: {
 		// width: constants.RECT_WIDTH / 2,
 		// fontSize: constants.TEXT_INPUT_HEIGHT / 3 - 5,
-		fontSize: constants.TEXT_INPUT_HEIGHT - 10,
+		fontSize: constants.TEXT_INPUT_HEIGHT - 5,
 		fontWeight: '800',
 		fontFamily: 'zaio',
 		color: colors.gb.darkestGold
@@ -82,7 +82,7 @@ const styles = {
 		shadowOpacity: 1.0
 	},
 	divideButtonText: {
-		fontSize: constants.TEXT_INPUT_HEIGHT / 3 - 5,
+		fontSize: constants.TEXT_INPUT_HEIGHT / 3 - 8,
 		fontFamily: 'goldenFont'
 	},
 	mediaView: {

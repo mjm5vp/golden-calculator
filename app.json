@@ -1,27 +1,27 @@
 {
-	"expo": {
-		"name": "Golden Calculator",
-		"description": "Calculate the sides of a golden rectangle.",
-		"slug": "golden-calculator",
-		"privacy": "public",
-		"primaryColor": "#DDB76B",
-		"sdkVersion": "25.0.0",
-		"platforms": ["ios", "android"],
-		"version": "1.0.0",
-		"orientation": "portrait",
-		"icon": "./assets/golden-calculator-icon.png",
-		"splash": {
-			"image": "./assets/golden-splash.png",
-			"resizeMode": "contain",
-			"backgroundColor": "#F6E69E"
-		},
-		"ios": {
-			"supportsTablet": true,
-			"bundleIdentifier": "com.mjm5vp.golden-calculator"
-		},
-		"android": {
-			"package": "com.mjm5vp.goldencalculator",
-			"permissions": []
-		}
-	}
+  "expo": {
+    "name": "Golden Calculator",
+    "description": "Calculate the sides of a golden rectangle.",
+    "slug": "golden-calculator",
+    "privacy": "public",
+    "primaryColor": "#DDB76B",
+    "sdkVersion": "33.0.0",
+    "platforms": ["ios", "android"],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/golden-calculator-icon.png",
+    "splash": {
+      "image": "./assets/golden-splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#F6E69E"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mjm5vp.golden-calculator"
+    },
+    "android": {
+      "package": "com.mjm5vp.goldencalculator",
+      "permissions": []
+    }
+  }
 }

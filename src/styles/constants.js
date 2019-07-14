@@ -7,11 +7,19 @@ export const gold = '#D4AF37';
 //Screen
 export const SCREEN_WIDTH = Dimensions.get('window').width;
 export const SCREEN_HEIGHT = Dimensions.get('window').height;
+export const ASPECT_RATIO = SCREEN_HEIGHT / SCREEN_WIDTH;
+
+export let CALC_WIDTH;
+
+if (ASPECT_RATIO > 1.6) {
+	CALC_WIDTH = SCREEN_WIDTH * 0.9;
+} else {
+	CALC_WIDTH = SCREEN_WIDTH * 0.7;
+}
 
 //calculator
-export const CALC_WIDTH = SCREEN_WIDTH * 0.9;
 export const CALC_HEIGHT = CALC_WIDTH * math.phi;
-export const RECT_WIDTH = SCREEN_WIDTH * 0.8;
+export const RECT_WIDTH = CALC_WIDTH * 0.9;
 export const RECT_HEIGHT = RECT_WIDTH / math.phi;
 export const RECT_CONTAINER_WIDTH = CALC_WIDTH - 8;
 // export const RECT_CONTAINER_HEIGHT = CALC_HEIGHT - 20;
