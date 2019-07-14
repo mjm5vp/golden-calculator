@@ -74,23 +74,20 @@ class ShowVideo extends Component {
 
     const resultView = showResult ? (
       <View>
-        <Text style={{ textAlign: 'center' }}>
+        <Text style={styles.resultText}>
           {result} seconds to realize real guys go for real down to Mars girls.
         </Text>
       </View>
     ) : null
 
     const buttonView = !showResult ? (
-      <View style={styles.elevationButton}>
-        <TouchableOpacity
-          onPress={pressBottomButton}
-          style={styles.videoButton}
-        >
+      <TouchableOpacity onPress={pressBottomButton} style={styles.videoButton}>
+        <View style={styles.elevationButton}>
           <Text style={styles.divideButtonText}>
             You need a Golden Calculator to divide...
           </Text>
-        </TouchableOpacity>
-      </View>
+        </View>
+      </TouchableOpacity>
     ) : null
 
     return (

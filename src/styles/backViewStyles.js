@@ -82,8 +82,10 @@ const styles = {
     shadowOpacity: 1.0
   },
   divideButtonText: {
-    fontSize: constants.TEXT_INPUT_HEIGHT / 3 - 8,
-    fontFamily: 'goldenFont'
+    fontSize: constants.TEXT_INPUT_HEIGHT / 3 - 7,
+    textAlignVertical: 'center',
+    fontFamily: 'goldenFont',
+    padding: 5
   },
   mediaView: {
     borderWidth: 2,
@@ -105,12 +107,12 @@ const styles = {
     height: constants.VIDEO_HEIGHT
   },
   videoButton: {
-    // height: 10,
+    height: constants.TEXT_INPUT_HEIGHT / 3,
     justifyContent: 'center',
-    alignItems: 'center',
-    shadowOffset: { height: 1, width: 1 },
-    shadowColor: colors.gb.black,
-    shadowOpacity: 1.0
+    alignItems: 'center'
+    // shadowOffset: { height: 1, width: 1 },
+    // shadowColor: colors.gb.black,
+    // shadowOpacity: 1.0
   },
   image: {
     width: constants.VIDEO_WIDTH,
@@ -121,8 +123,19 @@ const styles = {
     elevation: 10
   },
   elevationButton: {
-    borderTopWidth: 0,
-    elevation: 1
+    // height: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 1,
+    shadowOffset: { height: 1, width: 1 },
+    shadowColor: colors.gb.black,
+    shadowOpacity: 1.0,
+    backgroundColor: 'grey'
+  },
+  resultText: {
+    textAlign: 'center',
+    fontFamily: 'goldenFont',
+    fontSize: constants.TEXT_INPUT_HEIGHT / 3.5 - 5
   }
 }
 

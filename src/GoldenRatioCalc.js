@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Text, View, TouchableOpacity } from 'react-native'
+import { View } from 'react-native'
 import math from 'mathjs'
 
+import SideInput from './components/SideInput'
 import NumberPad from './NumberPad'
 import styles from './styles/goldenRatioCalcStyles'
 
@@ -17,6 +18,7 @@ class GoldenRatioCalc extends Component {
   componentWillMount() {
     this.clearHighlights()
     this.clearBorders()
+    this.pressView('shortStyles')
   }
 
   pressView = sideStyles => {
@@ -140,56 +142,24 @@ class GoldenRatioCalc extends Component {
       <View>
         <View style={[styles.rectContainer]}>
           <View style={[styles.constRect, borderStyles]}>
-            <View style={styles.sideInputContainer}>
-              <Text style={styles.labelText}>Short Side</Text>
-              <View style={styles.elevationInput}>
-                <TouchableOpacity onPress={() => this.pressView('shortStyles')}>
-                  <View style={[styles.textInput, shortHighlight]}>
-                    <Text
-                      allowFontScaling
-                      style={styles.text}
-                      numberOfLines={3}
-                    >
-                      {this.state.short}
-                    </Text>
-                  </View>
-                </TouchableOpacity>
-              </View>
-            </View>
-
-            <View style={styles.sideInputContainer}>
-              <Text style={styles.labelText}>Long Side</Text>
-              <View style={styles.elevationInput}>
-                <TouchableOpacity onPress={() => this.pressView('longStyles')}>
-                  <View style={[styles.textInput, longHighlight]}>
-                    <Text
-                      allowFontScaling
-                      style={styles.text}
-                      numberOfLines={3}
-                    >
-                      {this.state.long}
-                    </Text>
-                  </View>
-                </TouchableOpacity>
-              </View>
-            </View>
-
-            <View style={styles.sideInputContainer}>
-              <Text style={styles.labelText}>Total</Text>
-              <View style={styles.elevationInput}>
-                <TouchableOpacity onPress={() => this.pressView('totalStyles')}>
-                  <View style={[styles.textInput, totalHighlight]}>
-                    <Text
-                      allowFontScaling
-                      style={styles.text}
-                      numberOfLines={3}
-                    >
-                      {this.state.total}
-                    </Text>
-                  </View>
-                </TouchableOpacity>
-              </View>
-            </View>
+            <SideInput
+              pressView={() => this.pressView('shortStyles')}
+              highlightStyle={shortHighlight}
+              labelText="Short Side"
+              value={this.state.short}
+            />
+            <SideInput
+              pressView={() => this.pressView('longStyles')}
+              highlightStyle={longHighlight}
+              labelText="Long Side"
+              value={this.state.long}
+            />
+            <SideInput
+              pressView={() => this.pressView('totalStyles')}
+              highlightStyle={totalHighlight}
+              labelText="Total"
+              value={this.state.total}
+            />
           </View>
         </View>
 
