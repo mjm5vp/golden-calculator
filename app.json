@@ -21,7 +21,11 @@
     },
     "android": {
       "package": "com.mjm5vp.goldencalculator",
-      "permissions": []
+      "versionCode": 2,
+      "permissions": [],
+      "splash": {
+        "resizeMode": "contain"
+      }
     }
   }
 }

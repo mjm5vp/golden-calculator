@@ -114,6 +114,7 @@ class GoldenRatioCalc extends Component {
     this.setAllToEmptyString()
     this.clearHighlights()
     this.clearBorders()
+    this.pressView('shortStyles')
   }
 
   setAllToEmptyString = () => {
