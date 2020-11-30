@@ -92,7 +92,7 @@ class BackViewCalc extends Component {
 
     return (
       <View>
-        <View style={goldenStyles.rectContainer}>{gifView()}</View>
+        {/* <View style={goldenStyles.rectContainer}>{gifView()}</View> */}
 
         <View>
           <NumberPad
